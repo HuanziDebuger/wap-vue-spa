@@ -1,0 +1,215 @@
+/*
+ * @Author: zhudanmei 
+ * @Date: 2017-01-17 15:24:04 
+ * @Last Modified by: zhudanmei
+ * @Last Modified time: 2017-03-08 18:36:24
+ */
+<template>
+    <!--配送方式-->
+   <page>
+        <div class="pay-container">
+            <div class="send-type">
+                <h3 class="title">配送方式</h3>
+                <div class="type-list">
+                     <radio v-for="(item, index) in sendTypeSource" :source="sendTypeSource" :index="index" @onClick="onRadioClick">
+                    </radio>
+                </div>
+            </div>
+            <div class="confirm-cont" v-if="optionSource.length > 0">
+                <p class="flex1">送货前电话确认</p>
+                <coption  :source="optionSource" :index="1" @onClick="onOptionClick" >
+                    <span slot="pre">
+                        <img v-if="optionSource[1].isActive" src="../images/check_yes.png">
+                        <img v-else src="../images/check_no.png">
+                    </span>
+                </coption>
+            </div>
+            <div class="send-cont">
+                <h3 class="title">配送方式</h3>
+                <div class="send-list" v-for="(sendInfo,index) in this.source.shopCartDeliverInfoList">
+                    <p class="desc">由【{{sendInfo.shopName}}】配送{{sendInfo.goodsCount}}件商品</p>
+                    <ul class="goods-item">
+                        <li v-for="(imgs,index) in sendInfo.shopGoodsList">
+                            <img v-bind:src="'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='" v-lazyload="imgs.skuThumbImgUrl">
+                        </li>
+                    </ul>
+                    <div class="order-ulist">
+                        <radio  :source="sendInfo.shippingMethodArray" :index="index" @onClick="onRadioClick">
+                        </radio>
+                        <!-- <li data-code="Express" class="active">普通快递&nbsp;免运费</li>
+                        <input class="shippingMethod" type="hidden" name="shippingMethod[]" value="Express"> -->
+                        <!-- <radio v-for="(item, index) in senddata" :store="store" :index="index">
+                        </radio>-->
+                    </div>
+                    <p class="send_desc">大家电商品配送部分偏远地区需额外收取远程费</p>
+                </div>
+                
+            </div>
+            <!--备注-->
+            <div class="order-part">
+                <h3 class="title">备注</h3>
+                <input class="remark-in" id="remark-in" type="text" placeholder="15字以内" maxlength="15" value="">
+            </div>
+            <div class="order-btn">
+                <btn :class-name="'default red block'">确定</btn>
+            </div>
+        </div>
+   </page>
+</template>
+<script>
+    import Vue from 'vue';
+    import {Button,Page,RadioItem,RadioMixin,Modal, OptionItem, OptionMixin,} from 'gome-ui-kit';
+    import query from 'gome-utils-query';
+    import http from 'gome-utils-http';
+    import Lazyload from 'gome-ui-lazyload';
+    export default Vue.extend({
+        mixins: [RadioMixin,OptionMixin],
+        components: {
+            'btn': Button,
+            'page': Page,
+            'radio': RadioItem,
+            'coption': OptionItem,
+
+        },
+        data: function(){
+            return {
+                source:'',
+                sendTypeSource:'',
+                shopCartDeliver:'',
+                optionSource:[],
+                shippingMethod:'',
+            }
+        },
+        methods: {
+            
+        },
+        computed: {
+        },
+        created () {
+            
+            
+            http({
+                url: '//' + location.host + '/index.php',
+                data: {
+                    source: query.parse(window.location.search).source,
+                    ctl: 'order_ajax',
+                    act: 'orderShippingInfoAjax'
+                }
+            })
+            .then(function(data){
+                
+                this.source = data;
+                this.sendTypeSource = data.deliverTimeOptions.map((item,index)=>{
+                    
+                    return{
+                        content:item.label,
+                        sendCode:item.code,
+                        isActive: item.selected == 'Y' ? true : false,
+                    }
+                })
+                /***/
+                this.optionSource = data.isConfirm.map((item,index)=>{
+                    
+                    if(item.selected=='Y'){
+                        item.selected =true;
+                    }else{
+                        item.selected = false;
+                    }
+                    return{
+                        isActive: item.selected,
+                    }
+                    
+                });
+                
+                /*配送方式*/
+                
+                 this.initRadio(this.sendTypeSource);
+                 this.initOption(this.optionSource);
+            }.bind(this))
+        },
+});
+</script>
+<style lang='less'>
+    @import '../less/order.less';
+    .confirm-cont{
+        .flexbox();
+        .flexbox.v_center;
+       background-color: @white;
+       .module_padding();
+       .ver_padding();
+       .module();
+       font-size: @font-nm;
+       color: @gray-dark;
+       .option img {
+            width: .44rem;
+            height: .44rem;
+        }
+    }
+    .send-cont{
+        background-color: @white;
+        .module_padding();
+        .ver_padding();
+        .module();
+        .title{
+            color: @gray-light;
+            font-size: @font-nm;
+            margin-bottom: .4rem;
+        }
+        .send-list{
+            .border-bot(input-borcolor);
+            &:last-child{
+                border:none;
+            };
+            .desc{
+                .module();
+            }
+        }
+        
+        .goods-item{
+            height: 1rem;
+            width: 100%;
+            .module();
+            overflow: hidden;
+            img{
+                .set-width-height(1;1rem;);
+                margin-right: .1rem;
+                
+            }
+        }
+        .order-ulist .radio{
+            .border-nm(@input-borcolor);
+            border-radius: .05rem;
+            .set-line-height(1;.66rem;);
+            min-width: 30%;
+            margin-bottom: .24rem;
+            color: @gray;
+            .hor_padding();
+            .boxSizing();
+            text-align: center;
+            &.active{
+                .border-nm(@red);
+                color: @red;
+            };
+            
+        };
+        
+    }
+    .order-part{
+        background-color: @white;
+        padding: .3rem  .2rem;
+        background: #fff;
+        margin-bottom: .2rem;
+        .title{
+            margin-bottom: .2rem;
+        };
+        #remark-in{
+            display: block;
+            width: 100%;
+            height: .7rem;
+            .border-nm(@input-borcolor);
+            padding: 0 .16rem;
+            .boxSizing()
+        }
+
+    }
+</style>

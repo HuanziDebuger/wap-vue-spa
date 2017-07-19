@@ -1,0 +1,75 @@
+<template>
+    <page>
+        <navigator>填写订单</navigator>
+       <!--自提商品列表-->
+        <div class="product-list">
+            <div class="item" v-for="shops in source.shopCartInfoList">
+                <h3 class="shop-title">
+                    <span v-if="shops.isGome=='Y'"><i class="icon"></i>{{shops.shopName}}</span>
+                    <span v-else><i class="icon shop-icon"></i>{{shops.shopName}}</span>
+                </h3>
+                <ul class="item-list">
+                    <li v-for="products in shops.shopGoodsList">
+                        <product :img="products.skuThumbImgUrl">
+                            <div slot="content">
+                                <h4 class="product_title">{{products.skuName}}</h4>
+                                <span class="shop-source"><i></i>来自:{{products.shareSource}}</span>
+                                <p class="info"><span class="price">&yen;{{products.originalPrice}}</span><span class="num">x{{products.goodsCount}}</span></p>
+                                <p class="present" v-for="promotion in products.itemPromList">
+                                    <span class="tag-zp">[{{promotion.promLabel}}]</span><span class="promDesc">{{promotion.promDesc}}</span>
+                                </p>
+                                <div >
+                                    <p class="th-reason" v-for="Service in products.supportService">
+                                        <img v-if="Service.serviceType == '7'" src="../images/icon_6.png" >
+                                        <img v-if="Service.serviceType == '6'" src="../images/icon_7.png" >
+                                        {{Service.serviceDesc}}
+                                    </p>
+                                </div>
+                            </div>
+                        </product>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+    </page>
+</template>
+<script>
+    import Vue from 'vue';
+    import {Page, Product,} from 'gome-ui-kit';
+    import http from 'gome-utils-http';
+    import Nav from '../widgets/nav/nav.vue';
+    export default Vue.extend({
+        
+        components: {
+            product: Product,
+            'page': Page,
+            navigator: Nav
+        
+        },
+        data () {
+            return {
+                source: this.$store.state.$product.data,
+               
+                
+            }
+        },
+        computed: {
+        },
+        created () {
+            console.log(this.$store.state.$product.data);
+        },
+        methods: {
+            
+        }
+    })  
+</script>
+<style lang='less'>
+    @import '../less/order.less';
+    .tip-cont{
+        padding:.16rem .2rem;
+        background-color:#fff7d2;
+        font-size:@font-dark;
+        color:#ff5c5c;
+    }
+</style>

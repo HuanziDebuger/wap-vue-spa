@@ -1,0 +1,60 @@
+/*
+ * @Author: zhudanmei 
+ * @Date: 2017-01-07 12:31:03 
+ * @Last Modified by: zhaoye
+ * @Last Modified time: 2017-03-16 14:04:47
+ */
+@import '../../../../node_modules/gome-ui-kit/components/less/var.less';
+@import '../../../../node_modules/gome-ui-kit/components/less/layout.less';
+.layout();
+@import '../../../../node_modules/gome-ui-kit/components/less/utils.less';
+@module-margin: .2rem;
+.module() {
+    margin-bottom: @module-margin;
+}
+.boxSizing(){
+    box-sizing: border-box;
+}
+@inlineBlock:inline-block;
+
+@font-dark:.26rem;
+@input-borcolor:#d2d2d2;
+@list-padding:.28rem;
+
+.border-top(@color){
+    border-top: 1px @color solid;
+}
+.border-bot(@color){
+    border-bottom: 1px @color solid;
+}
+.text-right(){
+    text-align:right;
+}
+.fixed-btn(){
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color:#f9f9f9;
+}
+.block(){
+    display:block;
+}
+.module_padding(){
+    padding:.2rem;
+}
+.hor_padding(){
+    padding:0 .2rem;
+}
+.ver_padding(){
+    padding-top:.3rem;
+    padding-bottom:.3rem;
+}
+.padding(@top;@right;@bottom;@left;){
+    padding:@top @right @bottom @left;
+}
+.set-width-height(@width;@height;){
+    width: @height;
+    height: @width * @height;
+}
+
