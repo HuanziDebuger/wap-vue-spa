@@ -1,8 +1,8 @@
 /*
  * @Author: zhudanmei 
  * @Date: 2017-01-07 12:30:39 
- * @Last Modified by: zhudanmei
- * @Last Modified time: 2017-03-27 14:30:51
+ * @Last Modified by: zhaoye
+ * @Last Modified time: 2017-07-22 20:02:37
  */
 <template>
     <!--地址模块-->
@@ -62,3 +62,8 @@
 
     });
 </script>
+<style lang="less">
+@import '../less/order.less';
+
+</style>
+

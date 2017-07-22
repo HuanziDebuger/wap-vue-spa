@@ -214,7 +214,6 @@
 </script>
 <style lang='less'>
     @import '../less/order.less';
-    
     .add_address{
         .list{
             margin-bottom: .8rem;

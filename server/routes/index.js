@@ -2,7 +2,7 @@
  * @Author: zhaoye 
  * @Date: 2017-04-12 13:22:52 
  * @Last Modified by: zhaoye
- * @Last Modified time: 2017-07-05 14:15:26
+ * @Last Modified time: 2017-07-21 23:34:01
  */
 const express = require('express');
 const router = express.Router();
@@ -68,7 +68,7 @@ function compile(req) {
     if(!filepath.match(/node_modules/)){
         const report = cli.executeOnFiles([filepath])
         const log = reporter(report.results)
-        console.log(log)
+        // console.log(log)
         report.results.map( result => {
             if(result.errorCount > 0){
                 throw new Error(JSON.stringify(report.results))
@@ -122,7 +122,7 @@ router.get('*require', (req, res, next) => {
      //判断是否跳过，然后进入webpack流程
     let shouldNext = true
     entries.forEach( entry => {
-        console.log(entry, req.url)
+        // console.log(entry, req.url)
         if(req.url.match(new RegExp(entry))){
             shouldNext = false
         }        
@@ -176,7 +176,7 @@ router.get('*.js', (req, res, next) => {
     //判断是否跳过，然后进入webpack流程
     let shouldNext = true
     entries.forEach( entry => {
-        console.log(entry, req.url)
+        // console.log(entry, req.url)
         if(req.url.match(new RegExp(entry))){
             shouldNext = false
         }        
@@ -191,7 +191,7 @@ router.get('*.js', (req, res, next) => {
     }else{
         filepath = path.resolve(__dirname, '../../src', req.path.replace(/^\//,''))
     }
-    console.log(filepath)
+    // console.log(filepath)
     fs.readFile(filepath, (err, file) => {
         if(!file){
             next()

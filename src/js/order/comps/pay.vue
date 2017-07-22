@@ -1,8 +1,8 @@
 /*
  * @Author: zhudanmei 
  * @Date: 2017-01-07 17:37:02 
- * @Last Modified by: zhudanmei
- * @Last Modified time: 2017-03-27 14:32:23
+ * @Last Modified by: zhaoye
+ * @Last Modified time: 2017-07-22 19:51:32
  */
 <template>
     <!--支付方式-->
@@ -282,7 +282,7 @@
                         width: 1.2rem;
                         padding: 0 .04rem;
                         text-align: center;
-                        border: 1px solid #d2d2d2;
+                        border: .01rem solid #d2d2d2;
                         color: #ffa567;
                         border-radius: .08rem;
                     }
@@ -329,7 +329,6 @@
             margin-bottom: @font-sm * 1.5;
             font-weight: 700;
         };
-
     }
     .pay-store{
         .module_padding();

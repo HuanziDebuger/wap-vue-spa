@@ -14,7 +14,7 @@
     "gome-ui-lazyload": "^1.0.7",
     "gome-ui-gotop-z": "master",
     "gome-ui-modal-z": "master",
-    "gome-ui-kit": "^1.1.41",
+    "gome-ui-kit": "1.1.50",
     "gome-ui-share-z": "master",
     "gome-utils-check": "^0.0.1",
     "gome-ui-toast-z": "master",
@@ -31,7 +31,8 @@
     "gome-vue-vendor": "next",
     "vue-router": "*",
     "vuex": "*",
-    "zepto": "^1.2.0"
+    "zepto": "^1.2.0",
+    "babel-polyfill": "*"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
@@ -47,6 +48,7 @@
     "copy-webpack-plugin": "^4.0.1",
     "crequire": "^1.8.0",
     "css-loader": "^0.28.4",
+    "cssnano": "^3.10.0",
     "debug": "~2.6.3",
     "deep-diff": "^0.3.8",
     "delete": "^1.0.1",
@@ -76,6 +78,7 @@
     "ls-all": "^1.1.0",
     "mkdirp": "^0.5.1",
     "morgan": "~1.8.1",
+    "optimize-css-assets-webpack-plugin": "^2.0.0",
     "path-browser": "^2.2.1",
     "rmdir": "^1.2.0",
     "serve-favicon": "~2.4.2",

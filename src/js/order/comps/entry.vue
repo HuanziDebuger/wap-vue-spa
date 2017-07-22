@@ -1,8 +1,8 @@
 /*
  * @Author: zhudanmei 
  * @Date: 2017-01-18 16:32:47 
- * @Last Modified by: zhudanmei
- * @Last Modified time: 2017-07-17 17:45:45
+ * @Last Modified by: zhaoye
+ * @Last Modified time: 2017-07-22 20:54:51
 
  */
 <template>
@@ -106,7 +106,6 @@
             }
         },
         created () {
-            
             /*TODO 判断页面是否第一次进来，第一次取window.sourceData*/
             this.updateEntryData();
             
@@ -140,10 +139,7 @@
                     },
                     type: 'jsonp',
                     isPostBody: 'Y'
-                    
-                   
                 })
-                
                 .then(data => {
                     wx.config({
                         debug: false,   //生产时 更换为false
@@ -183,7 +179,6 @@
             getLocation(){
                 if (navigator.geolocation){
                     navigator.geolocation.getCurrentPosition(this.handleLocationError,this.showPosition);
-                    
                 }
                 else{
                     console.log('该浏览器不支持获取地理位置。');
@@ -266,7 +261,6 @@
                 }
             },
             maima () {
-                
                  /*埋码*/
                 var omniture_str=document.getElementById("goods_name_val");
                 var omniture_str_order = document.getElementById("order_name_val");
@@ -471,10 +465,8 @@
                         //                 }else{
                         //                     new Toast(data.failReason);
                         //                 }
-                                        
                         //             })
                         //         })
-                                
                         //     }
                         // })
                     }
@@ -489,8 +481,8 @@
 </script>
 
 <style lang='less'>
-    @import '../less/order.less';
-    
+	@import '../less/order.less';
+	
     .alert .window {
         border-radius: .15rem;
         .title{
@@ -566,5 +558,22 @@
             }
         }
     }
-    
+	//copy from pickupProductList.vue
+    .tip-cont{
+        padding:.16rem .2rem;
+        background-color:#fff7d2;
+        font-size: @font-dark;
+        color:#ff8000;
+        p{
+            .flexbox();
+            .flexbox.v_center;
+            line-height:.3rem;
+            .tip-icon{
+                display: @inlineBlock;
+                margin-right:.13rem;
+                .set-width-height(1;.34rem;);
+                .background-image-nm(url(../images/common_icon_tixing.png));
+            }
+        }
+    }
 </style>

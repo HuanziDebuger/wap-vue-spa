@@ -1,15 +1,16 @@
 /*
  * @Author: zhaoye 
  * @Date: 2017-01-07 12:30:57 
- * @Last Modified by: zhudanmei
- * @Last Modified time: 2017-07-19 16:57:06
+ * @Last Modified by: zhaoye
+ * @Last Modified time: 2017-07-22 14:05:32
  */
 
-//import 'babel-polyfill';
+// import 'babel-polyfill';
 import Vue from 'vue';
 import VueRouter from "vue-router";
-Vue.use(VueRouter);
+// Vue.use(VueRouter);
 import {Gotop,Toast,Modal,Root,CImage,Tag} from 'gome-ui-kit';
+
 Vue.use(Modal);
 /*import {lazyload} from 'gome-ui-lazyload';*/
 
@@ -20,7 +21,6 @@ import StoreAddress from './comps/storeAddress.vue';
 import EditAddress from './comps/editAddress.vue';
 import Pay from './comps/pay.vue';
 //import Sendway from './comps/sendWay.vue';
-
 import ProductList from './comps/productList.vue';
 import PickUpProductList from './comps/pickupProductList.vue';
 import AddressSelector from './widgets/addressSelector/addressSelector.vue';
@@ -32,7 +32,6 @@ $g.ready(() => {
     $g.setTitle('填写订单页')
     $g.setShareInfo({link:'',title:'',imageUrl:'',shareDesc:''})
 })
-
 
 const router = new VueRouter({
   routes: [
@@ -122,10 +121,21 @@ const router = new VueRouter({
 
     },
 });*/
-const app = new Root({
+const app = new Vue({
     el: '#app',
     router,
     store,
-});
+    render: h => h(Root)
+})
+// import test from './test.vue'
+// const app = new Vue({
+//     el: '#app',
+//     store,
+// 	render: h => h(test)
+// })
+
+
+import eb from 'gome-utils-eventbus'
+
 
 const gotop = new Gotop();

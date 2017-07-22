@@ -1,8 +1,8 @@
 /*
  * @Author: zhudanmei 
  * @Date: 2017-01-07 12:30:26 
- * @Last Modified by: zhudanmei
- * @Last Modified time: 2017-06-29 18:06:42
+ * @Last Modified by: zhaoye
+ * @Last Modified time: 2017-07-22 20:55:18
  */
 <template>
     <!--发票跳转-->
@@ -608,15 +608,11 @@
 </script>
 <style lang='less'>
     @import '../less/order.less';
-    .radio {
-        &.active {
-            color: @red;
-        }
-    }
+    
     .invoice-cont{
         
         .input-box {
-            .flex1();
+            .flexitem(1);
             .flexbox();
             .flexbox.v_center;
            
@@ -629,11 +625,11 @@
             border-radius:.08rem;
             input {
                 
-                .flex1();
+                .flexitem(1);;
                 .set-ellipsis-line(1);
             }
             .address-input{
-                .flex1();
+                .flexitem(1);;
                 .set-ellipsis-line(1);
                 line-height: @font-lg-sm;
             }
@@ -714,7 +710,6 @@
             margin-top:.1rem;
             line-height:.33rem;
         }
-       
     }
     .invoice-cont{
         .subtitle{
@@ -746,7 +741,7 @@
                 color:#999;
             }
             p{
-                .flex1();
+                .flexitem(1);
             }
         }
     }
@@ -761,11 +756,11 @@
                 
             }
             .input-box{
-                // .flex1();
+                // .flexitem(1);;
                 border-radius: .08rem;
             }
             textarea{
-                .flex1();
+                .flexitem(1);
                 border-radius: .08rem;
                 margin-left: .18rem;
                 padding: .18rem .16rem;

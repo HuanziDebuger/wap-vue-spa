@@ -1,19 +1,19 @@
 /*
  * @Author: zhudanmei 
  * @Date: 2017-02-23 16:34:55 
- * @Last Modified by: zhudanmei
- * @Last Modified time: 2017-03-10 15:57:22
+ * @Last Modified by: zhaoye
+ * @Last Modified time: 2017-07-22 11:41:41
  */
  <template>
     <div>
         <cmodal 
-                    :show="$store.state.$payPassword.isModalShow"
-                    :title="title"
-                    :hasClose="hasClose"
-                    @close="hideModal"
-                    class="giveaway-picker fill-password"
-                    :ok="ok"
-                    @ok="usePassword"
+				:show="$store.state.$payPassword.isModalShow"
+				:title="title"
+				:hasClose="hasClose"
+				@close="hideModal"
+				class="giveaway-picker fill-password"
+				:ok="ok"
+				@ok="usePassword"
                    
                     >
              <div slot="content" class="content">
@@ -105,7 +105,7 @@ export default Vue.extend({
         }
         .password-content{
             margin: .2rem 0;
-            border: 1px solid #e6e6e6;
+            border: .01rem solid #e6e6e6;
            
             input{
                 width: 100%;

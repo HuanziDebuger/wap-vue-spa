@@ -1,109 +1,106 @@
 /*
  * @Author: zhudanmei 
  * @Date: 2017-01-19 17:29:01 
- * @Last Modified by: zhudanmei
- * @Last Modified time: 2017-04-19 10:45:15
+ * @Last Modified by: zhaoye
+ * @Last Modified time: 2017-07-22 20:57:19
  */
 <template>
-        <div>
-            <div class="sendTime-moudle" v-if="$store.state.$productList.data">
-                <h3>配送时间</h3>
-                <!--限时达-->
-                <div v-if="g3ppTimeRadioSource[0]" class="xsdCont">
-                    <router-link :to="nextPage">
-                        <p class="subtitle">
-                            <span v-if="$store.state.$productList.data.g3ppDeliverTimeOptions[0].code=='XSD'">限时达商品配送时间</span>
-                            <span v-if="$store.state.$productList.data.g3ppDeliverTimeOptions[0].code=='JSD'">计时达商品配送时间</span>
-                           
-                            <span>{{$store.state.$productList.data.g3ppDeliverDesc}}</span>
-                        </p>
-                    </router-link>
-                    <div class="xsdTime">
-                        <div class="choose-time" style="display:flex;" v-for="item in $store.state.$productList.data.g3ppDeliverTimeOptions">
-                            {{deliverTime}}
-                            <span class="date-icon" @click="showModal('g3pp')"><img src="../../images/calendar_icon.png"></span>
-                        </div>
-                    </div>
-                </div>
-                <!--普通配送时间-->
-                <p class="subtitle" v-if="g3ppTimeRadioSource[0] && sendTypeRadioSource.length>0">其它商品配送时间</p>
-                <div class="type-list" v-if="sendTypeRadioSource">
-                    <radio @click.native="onSendTypeSelected(item, index)" v-for="(item, index) in sendTypeRadioSource" :source="sendTypeRadioSource" :index="index" @onClick="onRadioClick">
-                    </radio>
-                </div>
-                <!--选择配送选择时间 限时达  弹层-->
-                <cmodal 
-                    :show="isModalShow"
-                    :title="title"
-                    :hasClose="hasClose"
-                    @close="hideModal"
-                    class="time-picker"
-                    >
-                    <scroller :direction="'vertical'" slot="content">
-                        <div v-if="isG3ppTimePickerShow" class="show-g3pp-time">
-                            <div v-for="(g3ppDeliverTimeOption, index) in $store.state.$productList.data.g3ppDeliverTimeOptions" v-if="g3ppDeliverTimeOption.fixDeliveryOptions">
-                                <!--此处抄自原php代码，fixDeliveryOptions[0]-->
-                                <dt>
-                                    <span class="during-time">时间段</span>
-                                    <em v-for="slot in g3ppDeliverTimeOption.fixDeliveryOptions[0].slots">{{slot.label}}</em>
-                                </dt>
-                                <radio @click.native="onG3ppTimerPickerSelected(item, idx)" v-for="(item, idx) in g3ppTimeRadioSource[index]" :source="g3ppTimeRadioSource[index]"  :index="idx" @onClick="onRadioClick">
-                                    <i slot="post" class="item-icon"></i>
-                                </radio>
-                            </div>
-                        </div>
+	<div class="sendTime-moudle" v-if="$store.state.$productList.data">
+		<h3>配送时间</h3>
+		<!--限时达-->
+		<div v-if="g3ppTimeRadioSource[0]" class="xsdCont">
+			<router-link :to="nextPage">
+				<p class="subtitle">
+					<span v-if="$store.state.$productList.data.g3ppDeliverTimeOptions[0].code=='XSD'">限时达商品配送时间</span>
+					<span v-if="$store.state.$productList.data.g3ppDeliverTimeOptions[0].code=='JSD'">计时达商品配送时间</span>
+					
+					<span>{{$store.state.$productList.data.g3ppDeliverDesc}}</span>
+				</p>
+			</router-link>
+			<div class="xsdTime">
+				<div class="choose-time" style="display:flex;" v-for="item in $store.state.$productList.data.g3ppDeliverTimeOptions">
+					{{deliverTime}}
+					<span class="date-icon" @click="showModal('g3pp')"><img src="../../images/calendar_icon.png"></span>
+				</div>
+			</div>
+		</div>
+		<!--普通配送时间-->
+		<p class="subtitle" v-if="g3ppTimeRadioSource[0] && sendTypeRadioSource.length>0">其它商品配送时间</p>
+		<div class="type-list" v-if="sendTypeRadioSource">
+			<radio @click.native="onSendTypeSelected(item, index)" v-for="(item, index) in sendTypeRadioSource" :source="sendTypeRadioSource" :index="index" @onClick="onRadioClick">
+			</radio>
+		</div>
+		<!--选择配送选择时间 限时达  弹层-->
+		<cmodal 
+			:show="isModalShow"
+			:title="title"
+			:hasClose="hasClose"
+			@close="hideModal"
+			class="time-picker"
+			>
+			<scroller :direction="'vertical'" slot="content">
+				<div v-if="isG3ppTimePickerShow" class="show-g3pp-time">
+					<div v-for="(g3ppDeliverTimeOption, index) in $store.state.$productList.data.g3ppDeliverTimeOptions" v-if="g3ppDeliverTimeOption.fixDeliveryOptions">
+						<!--此处抄自原php代码，fixDeliveryOptions[0]-->
+						<dt>
+							<span class="during-time">时间段</span>
+							<em v-for="slot in g3ppDeliverTimeOption.fixDeliveryOptions[0].slots">{{slot.label}}</em>
+						</dt>
+						<radio @click.native="onG3ppTimerPickerSelected(item, idx)" v-for="(item, idx) in g3ppTimeRadioSource[index]" :source="g3ppTimeRadioSource[index]"  :index="idx" @onClick="onRadioClick">
+							<i slot="post" class="item-icon"></i>
+						</radio>
+					</div>
+				</div>
 
-                        <div  v-if="isSMITimePickerShow" class="show-smi-time">
-                            <div v-for="(deliverTimeOption, index) in $store.state.$productList.data.deliverTimeOptions" v-if="deliverTimeOption.fixDeliveryOptions">
-                                <dt >
-                                    <span class="during-time">时间段</span>
-                                    <em v-if="deliverTimeOption.fixDeliveryOptions && deliverTimeOption.fixDeliveryOptions.length>0" v-for="slot in deliverTimeOption.fixDeliveryOptions[0].slots">{{slot.label}}</em>
-                                </dt>
-                                <dt class="smi" v-for="(options, _index) in deliverTimeOption.fixDeliveryOptions">
-                                    <span class="during-time">{{options.dateStr}}</span>   
-                                    <span class="smi-radio-container" v-for="(slot, __index) in options.slots">
-                                        <radio @click.native="onSMITimerPickerSelected(deliverTimeRadioSource[_index * 2 + __index], _index * 2 + __index)" 
-                                                v-if="deliverTimeRadioSource.length > 0" 
-                                                :source="deliverTimeRadioSource" 
-                                                :index="_index * 2 + __index" 
-                                                @onClick="onRadioClick">
-                                            <i slot="post" class="item-icon"></i>
-                                        </radio>
-                                    </span>
-                                </dt>
-                                <!--<radio @click.native="onSMITimerPickerSelected(item, idx)" v-for="(item, idx) in deliverTimeRadioSource" :source="deliverTimeRadioSource"  :index="idx" @onClick="onRadioClick">
-                                    <i slot="post" class="item-icon"></i>
-                                </radio>-->
-                            </div>
-                        </div>
-                    </scroller>
-                </cmodal>
-                
-                <!--选择配送选择时间  smi运能 弹层-->
-                <!--<cmodal 
-                    :show="isSMITimePickerShow"
-                    :title="title"
-                    :hasClose="hasClose"
-                    @close="hideModal"
-                    class="time-picker"
-                    >
-                    <scroller :direction="'vertical'" slot="content">
-                        <div class="list show-g3pp-time">
-                            <div v-for="(deliverTimeOption, index) in $store.state.$productList.data.deliverTimeOptions" v-if="deliverTimeOption.fixDeliveryOptions">
-                                <!--此处抄自原php代码，fixDeliveryOptions[0]-->
-                                <!--<dt>时间段    <em v-for="slot in deliverTimeOption.fixDeliveryOptions[0].slots">{{slot.label}}</em></dt>
-                                <radio v-for="(item, idx) in deliverTimeRadioSource[index]" :source="deliverTimeRadioSource[index]"  :index="idx" @onClick="onRadioClick">
-                                    <i slot="post">
-                                        icon
-                                    </i>
-                                </radio>
-                            </div>
-                        </div>
-                    </scroller>
-                </cmodal>-->
-            </div>
-        </div>
-    </page>
+				<div  v-if="isSMITimePickerShow" class="show-smi-time">
+					<div v-for="(deliverTimeOption, index) in $store.state.$productList.data.deliverTimeOptions" v-if="deliverTimeOption.fixDeliveryOptions">
+						<dt >
+							<span class="during-time">时间段</span>
+							<em v-if="deliverTimeOption.fixDeliveryOptions && deliverTimeOption.fixDeliveryOptions.length>0" v-for="slot in deliverTimeOption.fixDeliveryOptions[0].slots">{{slot.label}}</em>
+						</dt>
+						<dt class="smi" v-for="(options, _index) in deliverTimeOption.fixDeliveryOptions">
+							<span class="during-time">{{options.dateStr}}</span>   
+							<span class="smi-radio-container" v-for="(slot, __index) in options.slots">
+								<radio @click.native="onSMITimerPickerSelected(deliverTimeRadioSource[_index * 2 + __index], _index * 2 + __index)" 
+										v-if="deliverTimeRadioSource.length > 0" 
+										:source="deliverTimeRadioSource" 
+										:index="_index * 2 + __index" 
+										@onClick="onRadioClick">
+									<i slot="post" class="item-icon"></i>
+								</radio>
+							</span>
+						</dt>
+						<!--<radio @click.native="onSMITimerPickerSelected(item, idx)" v-for="(item, idx) in deliverTimeRadioSource" :source="deliverTimeRadioSource"  :index="idx" @onClick="onRadioClick">
+							<i slot="post" class="item-icon"></i>
+						</radio>-->
+					</div>
+				</div>
+			</scroller>
+		</cmodal>
+		
+		<!--选择配送选择时间  smi运能 弹层-->
+		<!--<cmodal 
+			:show="isSMITimePickerShow"
+			:title="title"
+			:hasClose="hasClose"
+			@close="hideModal"
+			class="time-picker"
+			>
+			<scroller :direction="'vertical'" slot="content">
+				<div class="list show-g3pp-time">
+					<div v-for="(deliverTimeOption, index) in $store.state.$productList.data.deliverTimeOptions" v-if="deliverTimeOption.fixDeliveryOptions">
+						<!--此处抄自原php代码，fixDeliveryOptions[0]-->
+						<!--<dt>时间段    <em v-for="slot in deliverTimeOption.fixDeliveryOptions[0].slots">{{slot.label}}</em></dt>
+						<radio v-for="(item, idx) in deliverTimeRadioSource[index]" :source="deliverTimeRadioSource[index]"  :index="idx" @onClick="onRadioClick">
+							<i slot="post">
+								icon
+							</i>
+						</radio>
+					</div>
+				</div>
+			</scroller>
+		</cmodal>-->
+	</div>
 </template>
 <script>
     import Vue from 'vue';
@@ -122,7 +119,6 @@
     import { mapGetters } from 'vuex';
     import http from 'gome-utils-http';
     import queryparser from 'gome-utils-query';
-    
     export default Vue.extend({
         mixins: [RadioMixin,OptionMixin,ModalMixin],
         props: ['source'],
@@ -317,6 +313,7 @@
         }
     })  
 </script>
+
 <style lang='less'>
     @import '../../less/order.less';
     .time-picker {
@@ -403,7 +400,7 @@
     .show-smi-time,{
         dt {
             line-height: .72rem;
-            border-bottom: 1px solid #ccc;
+            border-bottom: .01rem solid #ccc;
             font-size: .26rem;
             background: url(../../images/time_icon.png) no-repeat .2rem center;
             background-size: .26rem .26rem;

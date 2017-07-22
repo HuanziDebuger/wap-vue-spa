@@ -59,22 +59,20 @@
 <style lang='less'>
     @import '../less/order.less';
     .tip-cont{
-       
         padding:.16rem .2rem;
         background-color:#fff7d2;
-        font-size:@font-dark;
+        font-size: @font-dark;
         color:#ff8000;
         p{
             .flexbox();
             .flexbox.v_center;
             line-height:.3rem;
             .tip-icon{
-                display:@inlineBlock;
+                display: @inlineBlock;
                 margin-right:.13rem;
                 .set-width-height(1;.34rem;);
                 .background-image-nm(url(../images/common_icon_tixing.png));
             }
         }
-        
     }
 </style>

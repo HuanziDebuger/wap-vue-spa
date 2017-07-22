@@ -1,8 +1,8 @@
 /*
  * @Author: zhudanmei 
  * @Date: 2017-02-24 16:47:12 
- * @Last Modified by: zhudanmei
- * @Last Modified time: 2017-03-08 18:35:07
+ * @Last Modified by: zhaoye
+ * @Last Modified time: 2017-07-22 02:19:20
  */
 <template>
     <div>
@@ -52,7 +52,7 @@ export default Vue.extend({
         }
     },
     created: function(){
-        this.getData();
+        this.getData()
     },
     methods: {
         getData(){
@@ -113,7 +113,7 @@ export default Vue.extend({
                     .tag{
                         display:@inlineBlock;
                         color: @red;
-                        border: 1px solid @red;
+                        border: .01rem solid @red;
                         padding: .02rem;
                         border-radius: .02rem;
                         margin-right: .02rem;
