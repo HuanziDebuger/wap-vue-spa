@@ -52,7 +52,7 @@
                 'borderRadius': '2rem',
                 'color': '#999',
                 'font-size': '0.9rem',
-                'border': '1px solid #ccc',
+                'border': '.01rem solid #ccc',
                 'box-sizing':'border-box',
                 'z-index': '999'
             });

@@ -4,7 +4,7 @@
         <div class="goods-list" v-if="$store.state.data.pickupGoodsInfo.goodsList && $store.state.data.pickupGoodsInfo.goodsList.length>0">
             <div class="list-cont">
                 <div class="img-box">
-                    <img v-if="index < 3" v-for="(imgs,index) in $store.state.data.pickupGoodsInfo.goodsList" v-bind:src="'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='" v-lazyload="imgs.skuThumbImgUrl">
+                    <CImage v-if="index < 3" v-for="(imgs,index) in $store.state.data.pickupGoodsInfo.goodsList"  :src="imgs.skuThumbImgUrl"></CImage>
                     <div class="more_point" v-if="$store.state.data.pickupGoodsInfo.goodsList.length>3"><span></span><span></span><span></span>
                     </div>
                 </div>
@@ -30,8 +30,10 @@
 <script>
     import Vue from 'vue';
     import Lazyload from 'gome-ui-lazyload';
+	import {CImage} from 'gome-ui-kit'
     export default Vue.extend({
         components: {
+			CImage,
         },
         data(){
             return{

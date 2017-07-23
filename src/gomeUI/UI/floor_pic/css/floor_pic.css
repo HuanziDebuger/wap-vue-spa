@@ -27,7 +27,7 @@
     overflow: hidden;
 }
 .floor_img .h_box:not(:only-child):not(:last-child){
-    border-bottom: 1px solid #f2f2f2;
+    border-bottom: .01rem solid #f2f2f2;
 }
 .floor_img .h_box li{    
     display: block;
@@ -55,7 +55,7 @@
     width: 100%;
 }
 .floor_img .h_box li:not(:only-child):not(:last-child){
-    border-right: 1px solid #f2f2f2;
+    border-right: .01rem solid #f2f2f2;
 }
 /*楼层图默认 内部线*/
 /*没有边框------- noborder */
@@ -67,15 +67,15 @@
 }
 /*全边线------ allborder */
 .floor_img.allborder{
-    border-top: 1px solid #f2f2f2;
-    border-bottom: 1px solid #f2f2f2;
+    border-top: .01rem solid #f2f2f2;
+    border-bottom: .01rem solid #f2f2f2;
 }
 
 /*上边线-------  */
 .floor_img.aboveborder{
-    border-top: 1px solid #f2f2f2;
+    border-top: .01rem solid #f2f2f2;
 }
 /*下边线*/
 .floor_img.belowborder{
-    border-bottom: 1px solid #f2f2f2;
+    border-bottom: .01rem solid #f2f2f2;
 }

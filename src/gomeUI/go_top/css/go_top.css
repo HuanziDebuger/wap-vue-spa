@@ -12,7 +12,7 @@
     border-radius: 2rem;
     color: #999;
     font-size: 0.9rem;
-    border: 1px solid #ccc;
+    border: .01rem solid #ccc;
 }
 
 #gotop[data-gotop-type='gotop2']:before {

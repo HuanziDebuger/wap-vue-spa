@@ -1,17 +1,16 @@
 /*
  * @Author: zhaoye 
  * @Date: 2017-01-07 13:14:39 
- * @Last Modified by: zhudanmei
- * @Last Modified time: 2017-04-05 17:51:35
+ * @Last Modified by: zhaoye
+ * @Last Modified time: 2017-07-23 00:52:00
  */
 import Vue from 'vue';
 export default {
   state: {
-      data: null
+      data: window.addressData || null
   },
   mutations: {
       updateAddress (state, newData) {
-          console.log(newData);
           state.data = newData
       }
   },

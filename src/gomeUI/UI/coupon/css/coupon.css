@@ -24,7 +24,7 @@
     box-sizing: border-box;
 }
 
-@media screen and (max-width: 321px) {
+@media screen and (max-width: 32.01rem) {
     .coupon {
         width: 9rem;
     }
@@ -85,7 +85,7 @@
     height: 2.3rem;
     line-height: 2.3rem;
     font-size: 1.2rem;
-    border-top: 1px solid rgba(255, 255, 255, .2);
+    border-top: .01rem solid rgba(255, 255, 255, .2);
 }
 
 .coupon .overdate {

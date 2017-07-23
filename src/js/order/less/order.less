@@ -2,13 +2,22 @@
  * @Author: zhudanmei 
  * @Date: 2017-01-07 12:31:03 
  * @Last Modified by: zhaoye
- * @Last Modified time: 2017-03-16 14:04:47
+ * @Last Modified time: 2017-07-23 17:08:28
  */
 @import '../../../../node_modules/gome-ui-kit/components/less/var.less';
 @import '../../../../node_modules/gome-ui-kit/components/less/layout.less';
 .layout();
 @import '../../../../node_modules/gome-ui-kit/components/less/utils.less';
 @module-margin: .2rem;
+.radio {
+	&.active {
+		color: @red;
+	}
+}
+#root,
+.page {
+	background: none;
+}
 .module() {
     margin-bottom: @module-margin;
 }
@@ -22,10 +31,10 @@
 @list-padding:.28rem;
 
 .border-top(@color){
-    border-top: 1px @color solid;
+    border-top: .01rem @color solid;
 }
 .border-bot(@color){
-    border-bottom: 1px @color solid;
+    border-bottom: .01rem @color solid;
 }
 .text-right(){
     text-align:right;

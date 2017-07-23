@@ -22,8 +22,8 @@
      -webkit-appearance:none;
     width: 5rem;
     height: 2.4rem;
-    border-top: 1px solid #bebebe;
-    border-bottom: 1px solid #bebebe;
+    border-top: .01rem solid #bebebe;
+    border-bottom: .01rem solid #bebebe;
     text-align: center;
     border-radius: 0;
 }
@@ -32,7 +32,7 @@
     width: 2.4rem;
     height: 2.4rem;
     line-height: 2.4rem;
-    border: 1px solid #bebebe;
+    border: .01rem solid #bebebe;
     background: #fff;
     color: #999;
 }

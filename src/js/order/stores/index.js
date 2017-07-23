@@ -1,8 +1,8 @@
 /*
  * @Author: zhaoye 
  * @Date: 2017-01-07 12:22:16 
- * @Last Modified by: zhudanmei
- * @Last Modified time: 2017-04-19 10:23:42
+ * @Last Modified by: zhaoye
+ * @Last Modified time: 2017-07-23 21:10:59
  */
 import Vue from 'vue';
 import Vuex from 'vuex';
@@ -29,8 +29,6 @@ export default new Vuex.Store({
   mutations: {
       update (state, newData) {
           state.data = newData
-          console.log(newData);
-          
       },
       updateStore (state, newData) {
           if(!state.data.storeAddress){

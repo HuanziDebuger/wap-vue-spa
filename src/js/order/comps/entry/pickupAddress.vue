@@ -1,8 +1,8 @@
 /*
  * @Author: zhudanmei 
  * @Date: 2017-01-07 12:30:43 
- * @Last Modified by: zhudanmei
- * @Last Modified time: 2017-04-12 15:50:27
+ * @Last Modified by: zhaoye
+ * @Last Modified time: 2017-07-23 02:47:57
  */
 <template>
     <!--自提地址模块-->
@@ -41,11 +41,12 @@
 </template>
 <script>
     import Vue from 'vue';
-    import {Root,OptionItem, OptionMixin,Toast} from 'gome-ui-kit';
+    import {Root,OptionItem, OptionMixin,Toast, CImage} from 'gome-ui-kit';
     import http from 'gome-utils-http';
     import query from 'gome-utils-query';
     import eventbus from 'gome-utils-eventbus'
     import islogin from '../../utils/islogin.js';
+	
     export default Vue.extend({
         mixins: [OptionMixin],
         components: {

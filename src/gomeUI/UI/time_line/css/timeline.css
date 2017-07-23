@@ -62,12 +62,12 @@
     left: -0.3rem;
     width:0.6rem;
     height:0.6rem;
-    margin-left: -1px;
+    margin-left: -.01rem;
     background: #ccc;
     border-radius:0.6rem;
 }
 .v_time_line li:last-child i{
-    margin-left: 1px;
+    margin-left: .01rem;
 }
 .v_time_line li.arrived{
     border-left: 2px solid #3aa11a;
@@ -79,18 +79,18 @@
     background: #3aa11a;
 }
 .v_time_line li .timeline_con{
-    border:1px solid #ccc;
+    border:.01rem solid #ccc;
     padding: 0.5rem;
 }
 .v_time_line li.arrived .timeline_con{
     color: #3aa11a;
-    border: 1px solid #3aa11a;
+    border: .01rem solid #3aa11a;
 }
 .v_time_line li:last-child{
     border-left: none;
 }
 .v_time_line li:last-child span,.v_time_line li:last-child .mark{
-    margin-left: 1px;
+    margin-left: .01rem;
 }
 .v_time_line li:last-child .timeline_con{
     margin-left: 2px;
@@ -102,7 +102,7 @@
     left: -0.7rem;
     width:1.4rem;
     height:1.4rem;
-    margin-left: -1px;
+    margin-left: -.01rem;
     background: #ccc;
     border-radius:1.5rem;
     color: #fff;

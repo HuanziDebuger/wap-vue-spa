@@ -2,7 +2,7 @@
  * @Author: zhaoye 
  * @Date: 2017-02-04 12:15:16 
  * @Last Modified by: zhaoye
- * @Last Modified time: 2017-04-13 18:04:27
+ * @Last Modified time: 2017-07-23 01:52:50
  */
 <template>
     <caside class="address-selector" :position="80">
@@ -73,27 +73,24 @@ export default Vue.extend({
             data.lv_thr = this.$store.getters['addressSelector/getAddressCode'].district_id || cookie.parse().gps_districtid
             data.lv_fou = this.$store.getters['addressSelector/getAddressCode'].town_id || cookie.parse().gps_townid
         }
-        
-        http({
-            url: this.url,
-            type: 'post',
-            data
-        })
-        .then(data => {
-            this.$store.commit('updateAddressSelector', {
-                data
-            })
-            this.address = this.$store.state.$addressSelector.data;
-            console.log(this.address)
-            
-            this.$store.commit('scrollTo', this.$store.getters['addressSelector/getIndex'])
-        },xhr => {
-            try{
-                new Toast(JSON.parse(xhr.responseText).failReason)
-            }catch(e){
-                new Toast('获取四级地址失败')
-            }
-        })
+		http({
+			url: this.url,
+			type: 'post',
+			data
+		})
+		.then(data => {
+				this.$store.commit('updateAddressSelector', {
+					data
+				})
+				this.address = this.$store.state.$addressSelector.data;
+				this.$store.commit('scrollTo', this.$store.getters['addressSelector/getIndex'])
+		},xhr => {
+			try{
+				new Toast(JSON.parse(xhr.responseText).failReason)
+			}catch(e){
+				new Toast('获取四级地址失败')
+			}
+		})
     },
     mounted () {
         eventbus.on('swiper.scrollTo', index => {

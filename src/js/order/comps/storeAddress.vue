@@ -1,8 +1,8 @@
 /*
  * @Author: zhudanmei 
  * @Date: 2017-01-22 11:47:29 
- * @Last Modified by: zhudanmei
- * @Last Modified time: 2017-06-26 11:38:24
+ * @Last Modified by: zhaoye
+ * @Last Modified time: 2017-07-22 22:10:30
  * 门店四级地址选择页面
  */
 <template>
@@ -288,7 +288,7 @@
         display: inline-block;
         width:1.3rem;
     }
-    border-bottom: 1px #e6e6e6 solid;
+    border-bottom: .01rem #e6e6e6 solid;
     font-size: @font-dark;
     .flexbox.v_center;
     .address {

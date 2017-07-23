@@ -2,7 +2,7 @@
  * @Author: zhaoye 
  * @Date: 2017-06-17 19:49:38 
  * @Last Modified by: zhaoye
- * @Last Modified time: 2017-07-22 02:14:50
+ * @Last Modified time: 2017-07-23 21:12:40
  */
 const Promise = require('bluebird')
 const webpack = require('webpack')
@@ -70,11 +70,19 @@ function webpackConfig ({ entries }) {
                     test: /\.js$/,
                     use:  loaderConfig.js,
                 },
-                {
-                    test: /\.(png|jp[e]?g|bmp|gif)$/,
+				{
+                    test: /^.*(gome-ui-kit).*?\.(png|jp[e]?g|bmp|gif)$/,
                     use: [
                         {
-                            loader: 'url-loader?name=[path]/[name].[ext]?v=[hash]&publicPath=http://localhost:3000/&outputPath=images/&limit=5000'
+                            loader: 'url-loader'
+                        }
+                    ]
+                },
+                {
+                    test: /^((?!(gome-ui-kit)).)*\.(png|jp[e]?g|bmp|gif)$/,
+                    use: [
+                        {
+                            loader: 'url-loader?name=[path]/[name].[ext]?v=[hash]&publicPath=//img.gomein.net.cn/plus/&outputPath=images/&limit=5000'
                         }
                     ]
                 }
@@ -121,26 +129,27 @@ function webpackConfig ({ entries }) {
         path: path.resolve(__dirname, `dist`),
         filename: `js/[name].js`,
     }
-    config.devtool = 'cheap-module-source-map'
+    config.devtool = 'source-map'
+	config.plugins.push(new ExtractTextPlugin({
+			filename: 'style/[name].css',
+			disable: false,
+			allChunks: true,
+		}))
+	config.plugins.push(new OptimizeCssAssetsPlugin({
+		cssProcessor: require('cssnano'),
+		cssProcessorOptions: { discardComments: {removeAll: true } },
+		canPrint: true
+	}))
+		
+	config.plugins.push(new UglifyJSPlugin({
+		sourceMap: true,
+		comments: false
+	}))
     //区别环境
     if(!isProd){
         config.entry['CommonsChunk/uiKit'].push('./lib/hotReloadEntry.js')
 		
-        config.plugins.push(new ExtractTextPlugin({
-                filename: 'style/[name].css',
-                disable: false,
-                allChunks: true,
-            }))
-		config.plugins.push(new OptimizeCssAssetsPlugin({
-			cssProcessor: require('cssnano'),
-			cssProcessorOptions: { discardComments: {removeAll: true } },
-			canPrint: true
-		}))
-			
-        config.plugins.push(new UglifyJSPlugin({
-            sourceMap: true,
-            comments: false
-        }))
+       
     }else{
         config.plugins.push(new webpack.DefinePlugin({
                 'process.env':{

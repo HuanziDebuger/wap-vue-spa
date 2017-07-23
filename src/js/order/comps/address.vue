@@ -2,7 +2,7 @@
  * @Author: zhudanmei 
  * @Date: 2017-01-07 12:30:39 
  * @Last Modified by: zhaoye
- * @Last Modified time: 2017-07-22 20:02:37
+ * @Last Modified time: 2017-07-23 21:10:13
  */
 <template>
     <!--地址模块-->
@@ -47,14 +47,14 @@
                 }
             })
             .then(islogin)
-            .then(function(data){
-                
+            .then(data => {
+				window.addressData = data
                 this.$store.commit('updateAddress', data)
-                
                 if(this.$store.state.$address.data){
                     this.showAddressList = true;
                 }
-            }.bind(this))
+				return true
+            })
         },
         methods:{
             

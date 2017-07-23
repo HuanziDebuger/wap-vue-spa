@@ -1458,7 +1458,7 @@
             alertFram[alertnum].style.zIndex = "99999999";
             alertFram[alertnum].style.borderRadius='3px';
             strHtml = "<ul style=\"list-style:none;margin:0px;padding:0px;width:100%;background:#fff;border-radius: 3px;display:-webkit-box;display:-moz-box;display:box;-moz-box-orient:vertical;-webkit-box-orient:vertical;box-orient:vertical;\">\n";
-            strHtml += " <li style=\"text-align:center;font-size:16px;line-height:45px;color:#666;border-bottom:1px #e6e6e6 solid;background:#f2f2f2;\">"+title+"</li>\n";
+            strHtml += " <li style=\"text-align:center;font-size:16px;line-height:45px;color:#666;border-bottom:.01rem #e6e6e6 solid;background:#f2f2f2;\">"+title+"</li>\n";
             strHtml += " <li style=\"width: 90%;margin:10px auto;padding:10px 0px;text-align:center;font-size:14px;;color:#666;line-height:20px;\" >"+str+"</li>\n";
             strHtml += " <li style='line-height:40px;width: 90%;border-radius:2px;text-align: center;font-size:16px;cursor: pointer;background:#ff5c5c;color:#fff;margin:0 auto 20px;'  onclick='doOk("+alertnum+")'>确 定</li>\n";
             strHtml += "</ul>\n";
@@ -1521,9 +1521,9 @@
             alertFram[alertnum].style.zIndex = "99999999";
             alertFram[alertnum].style.borderRadius='3px';
             strHtml = "<ul style=\"list-style:none;margin:0px;padding:0px;width:100%;background:#fff;border-radius: 3px;\">\n";
-            strHtml += " <li style=\"text-align:center;font-size:16px;line-height:45px;color:#666;border-bottom:1px #e6e6e6 solid;background:#f2f2f2;\">"+title+"</li>\n";
+            strHtml += " <li style=\"text-align:center;font-size:16px;line-height:45px;color:#666;border-bottom:.01rem #e6e6e6 solid;background:#f2f2f2;\">"+title+"</li>\n";
             strHtml += " <li style=\"width: 90%;margin:10px auto;text-align:center;font-size:14px;;color:#666;line-height:40px;\" >"+str+"</li>\n";
-            strHtml += " <li style='float:left;line-height:40px;height:40px;width: 42.5%;box-sizing:border-box;border-radius:3px;text-align: center;font-size:16px;cursor: pointer;background:#ffffff;color:#666;border:1px #e6e6e6 solid;margin:0 0 20px 5%;' id='cancle' data-value="+alertnum+">"+btn2+"</li>\n";
+            strHtml += " <li style='float:left;line-height:40px;height:40px;width: 42.5%;box-sizing:border-box;border-radius:3px;text-align: center;font-size:16px;cursor: pointer;background:#ffffff;color:#666;border:.01rem #e6e6e6 solid;margin:0 0 20px 5%;' id='cancle' data-value="+alertnum+">"+btn2+"</li>\n";
             strHtml += " <li style='float:left;line-height:40px;width: 42.5%;border-radius:3px;text-align: center;font-size:16px;cursor: pointer;background:#ff5c5c;color:#fff;margin:0 5% 20px 5%;'  onclick='doOk("+alertnum+")'>"+btn1+"</li>\n";
             strHtml += "</ul>\n";
             alertFram[alertnum].innerHTML = strHtml;

@@ -2,7 +2,7 @@
  * @Author: zhaoye 
  * @Date: 2017-01-07 12:30:57 
  * @Last Modified by: zhaoye
- * @Last Modified time: 2017-07-22 14:05:32
+ * @Last Modified time: 2017-07-23 00:16:02
  */
 
 // import 'babel-polyfill';
@@ -135,7 +135,5 @@ const app = new Vue({
 // })
 
 
-import eb from 'gome-utils-eventbus'
 
-
-const gotop = new Gotop();
+const gotop = new Gotop()

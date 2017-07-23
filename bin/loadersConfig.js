@@ -14,18 +14,19 @@ module.exports = {
         //     }
         // }
     ],
-    css: !isProd ? ['style-loader', 'css-loader']
-                : ExtractTextPlugin.extract({
+    css: /*!isProd ? ['style-loader', 'css-loader']
+                :*/ ExtractTextPlugin.extract({
                     fallback: "style-loader",
                     use: [
                         {
                             loader: 'css-loader',
                             options: {
+								camelCase: true,
                                 minimize: true
                             }
                         }
                     ]}),
-    less: !isProd ? [{
+    less:/* !isProd ? [{
 		loader: 'style-loader',
 		// options: {
 		// 	singleton: true
@@ -33,15 +34,18 @@ module.exports = {
 	}, {
 		loader:'css-loader',
 		options: {
-			modules: false,
 			camelCase: true,
 		}
 	}, 'less-loader']
-                :  ExtractTextPlugin.extract({
+                : */ ExtractTextPlugin.extract({
                     fallback: "style-loader",
                     use: [
                         {
-                            loader: 'css-loader'
+                            loader: 'css-loader',
+							options: {
+								camelCase: true,
+                                minimize: true
+							}
                         },
                         {
                             loader: 'less-loader',

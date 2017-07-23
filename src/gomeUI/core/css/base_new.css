@@ -18,13 +18,13 @@ html{font-size:73.24%}
 @media screen and (min-width:414px){
 html{font-size:73.24%}
 }
-@media screen and (min-width:481px){
+@media screen and (min-width:48.01rem){
 html{font-size:94%}
 }
-@media screen and (min-width:561px){
+@media screen and (min-width:56.01rem){
 html{font-size:109%}
 }
-@media screen and (min-width:641px){
+@media screen and (min-width:64.01rem){
 html{font-size:125%}
 }
 body{margin:0 auto;min-width:320px;max-width:640px;font-family:"Microsoft YaHei",Arial,"Helvetica";background:#f2f2f2;color:#333;font-size:1.2rem}
@@ -47,7 +47,7 @@ del{text-decoration:line-through}
 .ellipsis{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .ellipsis_two{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .letter_middle{display:box;display:-webkit-box;box-orient:vertical;-webkit-box-orient:vertical;box-pack:center;-webkit-box-pack:center}
-.radio{display: inline-block;width:16px;height:16px;border:1px #ccc solid;border-radius:16px}
+.radio{display: inline-block;width:16px;height:16px;border:.01rem #ccc solid;border-radius:16px}
 .radio_ckd:before{float:left;width:12px;height:12px;margin:2px;background:-webkit-linear-gradient(top,#e30000,#bb0101);border-radius:12px;content:''}
 .nav {position: relative;text-align: center;}
 /*.nav .toolbar{width: 100%;height: 4.4rem;line-height: 4.4rem;background: #fff;color: #fff;}
@@ -65,7 +65,7 @@ del{text-decoration:line-through}
 .nav_searchBox{margin:0 8.1rem 0 4.1rem}
 .nav_searchHistory{margin:0 1.5rem 0 6.3rem}
 .nav .nav_ulist{position:absolute;top:4.4rem;right:0;z-index:99;font-size:1.5rem;color:#ccc}
-.nav_ulist li{width:12.5rem;height:5.5rem;line-height:5.5rem;border-bottom:1px solid #464646;background:#333;opacity:.95;}
+.nav_ulist li{width:12.5rem;height:5.5rem;line-height:5.5rem;border-bottom:.01rem solid #464646;background:#333;opacity:.95;}
 .nav_ulist li:last-child{border-bottom:none}
 .nav_ulist li a{display:block;width:100%;height:100%;padding-left:20%;box-sizing:border-box;text-align:left;color:#fff}
 .nav_ulist li a:before{float:left;margin-right:1rem;speak:none;font-size:1.8rem}
@@ -85,16 +85,16 @@ input::-webkit-search-cancel-button{display:none}
 .search_module .search .search_input_bar input{border:0;height:2.9rem;width:100%;outline:0;color:#333;padding:0 .5rem;box-sizing:border-box;border-radius:.3rem;font:400;line-height:2.9rem}
 .search_module .search .search_item{display:none; float:left;color: #666;padding-left: 1rem;font-size: 1.4rem;}
 .search_module .search .search_item:before{float: right;margin-left:0.5rem;font-size:0.9rem;margin-top:0.1rem;}
-.search_show{display:none;border-top:1px solid #e6e6e6;background:#fff}
-.search_show .hot_keywords{display:none;padding:1rem;border-bottom:1px solid #e6e6e6;overflow:hidden}
+.search_show{display:none;border-top:.01rem solid #e6e6e6;background:#fff}
+.search_show .hot_keywords{display:none;padding:1rem;border-bottom:.01rem solid #e6e6e6;overflow:hidden}
 .search_show .hot_keywords span{display:inline-block;float:left;height:2.5rem;line-height:2.5rem;margin:.5rem;border:.1rem solid #bebebe;border-radius:.1rem;padding:0 .8rem;font-size:1.2rem;color:#999}
 .search_show .history{display:none;padding-bottom:1.5rem}
-.search_show .u_list li{border-bottom:1px solid #e6e6e6;line-height:4.4rem;color:#666;font-size:1.2rem;text-align:left}
+.search_show .u_list li{border-bottom:.01rem solid #e6e6e6;line-height:4.4rem;color:#666;font-size:1.2rem;text-align:left}
 .search_show .u_list li:last-child{border-bottom:none}
-.search_show .history .u_list{padding-left:1.5rem;border-bottom:1px solid #e6e6e6}
+.search_show .history .u_list{padding-left:1.5rem;border-bottom:.01rem solid #e6e6e6}
 .search_show .history .u_list li{position:relative;padding-left:2rem}
 .search_show .history .u_list li:before{position:absolute;top:1.4rem;left:0;width:1.7rem;height:1.7rem;line-height:1.7rem;font-size:1.7rem;color:#999}
-.search_show .history .clear_btn{display:block;margin:1.5rem auto 0;border:1px solid #666;border-radius:.4rem;width:59%;text-align:center;line-height:3.2rem;font-size:1.4rem;color:#666} 
+.search_show .history .clear_btn{display:block;margin:1.5rem auto 0;border:.01rem solid #666;border-radius:.4rem;width:59%;text-align:center;line-height:3.2rem;font-size:1.4rem;color:#666} 
 .plc_footer{padding-bottom:4.5rem;background:#fff;}
 .plc_footer .usr_bar{padding:1.5rem 2rem;height:1.5rem;border-bottom:.1rem solid #e6e6e6;}
 .plc_footer .usr_bar span{float:left;padding:0 .7rem;color:#197fe7;line-height:1.5rem;}

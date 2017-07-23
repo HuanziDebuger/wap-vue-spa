@@ -136,7 +136,7 @@
     max-width: 640px;
     width: 80%;
     background: #fff;
-    border: 1px solid #ccc;
+    border: .01rem solid #ccc;
     /*border-radius: .5rem;*/
 }
 
@@ -144,7 +144,7 @@
     position: relative;
     height:5rem;
 /*
-    border-bottom: 1px solid #ccc;
+    border-bottom: .01rem solid #ccc;
     background: #f2f2f2;
 */
     text-align: center;
@@ -195,7 +195,7 @@
     white-space: nowrap;
     vertical-align: middle;
     box-sizing: border-box;
-    border-top: 1px solid #d2d2d2;
+    border-top: .01rem solid #d2d2d2;
 /*    border-radius: .2rem;*/
     height: 4.4rem;
     font-size: 1.6rem;
@@ -222,11 +222,11 @@
 
 .msgbox_masker .msgbox .btn_bar .confirm {
     background: #ff5c5c;
-/*    border: 1px solid #ff5c5c;*/
+/*    border: .01rem solid #ff5c5c;*/
     color: #fff;
 }
 .msgbox_masker .msgbox .btn_bar .confirm.reverse {
-/*    border: 1px solid #d2d2d2;*/
+/*    border: .01rem solid #d2d2d2;*/
     background-color: #fff;
     color: #333;
 }
@@ -243,7 +243,7 @@
 
 .msgbox_masker .msgbox .btn_bar .cancel {
     background: #fff;
-    border-right: 1px solid #d2d2d2;
+    border-right: .01rem solid #d2d2d2;
     color: #333;
 }
 .msgbox_masker .msgbox .btn_bar .cancel:active {

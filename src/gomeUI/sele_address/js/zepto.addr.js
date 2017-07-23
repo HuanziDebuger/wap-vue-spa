@@ -200,7 +200,7 @@
                 $addr_selected_list.on('click', 'li', function () {
                     var index = $(this).index();
                     addrSlider($(this));
-                    $addr_list.css('height', '1px');
+                    $addr_list.css('height', '.01rem');
                     $addr_list.eq(index).css('height', 'auto');
                 })
 
@@ -298,7 +298,7 @@
                 addrSlider(ele, num);
                 newSwiper(num, $addr_swipe);
                 $addr_swipe.get(0).swiper.slideTo(num);
-                $addr_list.css('height', '1px');
+                $addr_list.css('height', '.01rem');
                 $addr_list.eq(num).css('height', 'auto');
             }
 
@@ -355,7 +355,7 @@
                     newSwiper(0);
                     $addr_swipe.get(0).swiper.slideNext();
                     bindAreaLv(code, index + 1, $loading);
-                    $addr_list.css('height', '1px');
+                    $addr_list.css('height', '.01rem');
                     $addr_list.eq(index + 1).css('height', 'auto');
                 }
                 if (index == availableLevel-1) {

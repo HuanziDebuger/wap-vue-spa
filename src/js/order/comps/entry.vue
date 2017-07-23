@@ -2,7 +2,7 @@
  * @Author: zhudanmei 
  * @Date: 2017-01-18 16:32:47 
  * @Last Modified by: zhaoye
- * @Last Modified time: 2017-07-22 20:54:51
+ * @Last Modified time: 2017-07-23 00:48:34
 
  */
 <template>
@@ -150,7 +150,7 @@
                         jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage'],
                     });
                     
-                        var imgUrl = 'http://js.gomein.net.cn/mobile/cms/prom/hybrid/p/cms/src/images/gomelogo.png?v=20170307'
+                        var imgUrl = 'http://img.gomein.net.cn/mobile/cms/prom/hybrid/p/cms/src/images/gomelogo.png?v=20170307'
                     
                     wx.ready(function(){
                         // 分享给朋友
@@ -261,51 +261,55 @@
                 }
             },
             maima () {
-                 /*埋码*/
-                var omniture_str=document.getElementById("goods_name_val");
-                var omniture_str_order = document.getElementById("order_name_val");
-                var tmpstr = "";
-                var skutype ='普通';
-                if(window.sourceData.logisticsGoodsInfo && window.sourceData.logisticsGoodsInfo.goodsList){
-                    for(var i=0;i < window.sourceData.logisticsGoodsInfo.goodsList.length;i++){
-                        
-                        tmpstr += ";"+window.sourceData.logisticsGoodsInfo.goodsList[i].goodsNo+";;;;eVar33=|eVar22=|eVar50=普通," ;
-                        omniture_str_order.value += ";"+ window.sourceData.logisticsGoodsInfo.goodsList[i].goodsNo + ";"+ window.sourceData.logisticsGoodsInfo.goodsList[i].goodsCount+";"+ window.sourceData.logisticsGoodsInfo.goodsList[i].totalPrice + ","
-                       
-                    }
-                }
-                
-                if(window.sourceData.pickupGoodsInfo && window.sourceData.pickupGoodsInfo.goodsList){
-                    var pickupGoodsInfo = window.sourceData.pickupGoodsInfo;
-                    var pickupGoods = pickupGoodsInfo.goodsList;
-                    for(var i=0;i < pickupGoods.length;i++){
-                        tmpstr += ";"+pickupGoods[i].goodsNo+";;;;eVar33=|eVar22=|eVar50=普通," ;
-                        omniture_str_order.value += ";"+ pickupGoods[i].goodsNo + ";"+ pickupGoods[i].goodsCount+";"+ pickupGoods[i].totalPrice + ","
-                        
-                    }
-                }
-                omniture_str.value = tmpstr;
-                var doSCode = function(){
-                    var omniture_goods_str = "";
-                    s.products = omniture_str.value;
-                    s.events = "scCheckout";
-                    s.pageName    = "购物车流程:提交订单";
-                    s.channel     = "购物车流程";
-                    s.prop1       = "购物车流程:提交订单";
-                    s.prop2       = "购物车流程:提交订单";
-                    s.prop3       = "购物车流程:提交订单:首页";
-                    s.prop4       = "购物流程:提交订单";
-                    s_code = s.t();
-                }
-               if(document.querySelector('#maima')){
-                    doSCode();
-               }else{
-                    var newScript = document.createElement('script');
-                    newScript.id="maima";
-                    newScript.src = '//js.gomein.net.cn/plus/js/public/omniture/s_code.js?v=20160908';
-                    document.body.appendChild(newScript);
-                    newScript.onload = doSCode;
-               }
+				try{
+					 /*埋码*/
+						var omniture_str=document.getElementById("goods_name_val");
+						var omniture_str_order = document.getElementById("order_name_val");
+						var tmpstr = "";
+						var skutype ='普通';
+						if(window.sourceData.logisticsGoodsInfo && window.sourceData.logisticsGoodsInfo.goodsList){
+							for(var i=0;i < window.sourceData.logisticsGoodsInfo.goodsList.length;i++){
+								
+								tmpstr += ";"+window.sourceData.logisticsGoodsInfo.goodsList[i].goodsNo+";;;;eVar33=|eVar22=|eVar50=普通," ;
+								omniture_str_order.value += ";"+ window.sourceData.logisticsGoodsInfo.goodsList[i].goodsNo + ";"+ window.sourceData.logisticsGoodsInfo.goodsList[i].goodsCount+";"+ window.sourceData.logisticsGoodsInfo.goodsList[i].totalPrice + ","
+							
+							}
+						}
+						
+						if(window.sourceData.pickupGoodsInfo && window.sourceData.pickupGoodsInfo.goodsList){
+							var pickupGoodsInfo = window.sourceData.pickupGoodsInfo;
+							var pickupGoods = pickupGoodsInfo.goodsList;
+							for(var i=0;i < pickupGoods.length;i++){
+								tmpstr += ";"+pickupGoods[i].goodsNo+";;;;eVar33=|eVar22=|eVar50=普通," ;
+								omniture_str_order.value += ";"+ pickupGoods[i].goodsNo + ";"+ pickupGoods[i].goodsCount+";"+ pickupGoods[i].totalPrice + ","
+								
+							}
+						}
+						omniture_str.value = tmpstr;
+						var doSCode = function(){
+							var omniture_goods_str = "";
+							s.products = omniture_str.value;
+							s.events = "scCheckout";
+							s.pageName    = "购物车流程:提交订单";
+							s.channel     = "购物车流程";
+							s.prop1       = "购物车流程:提交订单";
+							s.prop2       = "购物车流程:提交订单";
+							s.prop3       = "购物车流程:提交订单:首页";
+							s.prop4       = "购物流程:提交订单";
+							s_code = s.t();
+						}
+					if(document.querySelector('#maima')){
+							doSCode();
+					}else{
+							var newScript = document.createElement('script');
+							newScript.id="maima";
+							newScript.src = '//js.gomein.net.cn/plus/js/public/omniture/s_code.js?v=20160908';
+							document.body.appendChild(newScript);
+							newScript.onload = doSCode;
+					}
+				}catch(e){
+					//do nothing
+				}
             },
             updateEntryData () {
                 /*订单接口v3接口*/
@@ -322,11 +326,10 @@
                 })
                 .then(islogin)
                 .then(data => {
-                    
                     if(data.isSuccess == 'Y'){
                         window.sourceData = data;
                         
-                       this.maima();
+                        this.maima();
                         this.$store.commit('update', data);
                         this.initAddress(data);
                         if(data.successMessage){  //新用户没有收货地址，提示框
@@ -341,7 +344,6 @@
                            
                             })
                         }
-                        
                         /*判断页面是否是第一次进来，第一次进来不弹框*/
                         if(this.$store.state.isfirst){
                             this.$store.commit('alreadyentered', data);
@@ -377,6 +379,9 @@
                         
                     }
                 })
+				.catch(e => {
+					new Toast(e.message)
+				})
             },
             initAddress (data) {
                 if(data.address){

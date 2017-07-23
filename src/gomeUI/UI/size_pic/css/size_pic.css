@@ -62,11 +62,11 @@
 .size_pic .h_box .v_box:first-child,
 .size_pic .h_box .big_pic_box:first-child,
 .size_pic .h_box>a:first-child:not(:last-child){
-    border-right: 1px solid #f2f2f2;
+    border-right: .01rem solid #f2f2f2;
 }
 .size_pic .h_box .v_box > a:first-child,
 .size_pic .h_box:not(:only-child):not(:last-child){
-    border-bottom: 1px solid #f2f2f2;
+    border-bottom: .01rem solid #f2f2f2;
 }
 
 
@@ -111,15 +111,15 @@
 }
 /*全边线------ allborder */
 .size_pic.allborder{
-    border-top: 1px solid #f2f2f2;
-    border-bottom: 1px solid #f2f2f2;
+    border-top: .01rem solid #f2f2f2;
+    border-bottom: .01rem solid #f2f2f2;
 }
 
 /*上边线-------  */
 .size_pic.aboveborder{
-    border-top: 1px solid #f2f2f2;
+    border-top: .01rem solid #f2f2f2;
 }
 /*下边线*/
 .size_pic.belowborder{
-    border-bottom: 1px solid #f2f2f2;
+    border-bottom: .01rem solid #f2f2f2;
 }

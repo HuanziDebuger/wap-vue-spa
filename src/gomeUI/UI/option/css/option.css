@@ -25,13 +25,13 @@
     -webkit-box-pack: center;
     width: 1.6rem;
     height: 1.6rem;
-    border: 1px solid #c7c7c7;
+    border: .01rem solid #c7c7c7;
     border-radius: 1.6rem;
     overflow: hidden;
 }
 
 .radio_default.radio_ckd {
-    border: 1px solid #ff5151;
+    border: .01rem solid #ff5151;
 }
 
 .radio_default.radio_ckd:before {
@@ -44,7 +44,7 @@
 }
 
 .radio_default.checked {
-    border: 1px solid #ff5151;
+    border: .01rem solid #ff5151;
 }
 
 .radio_default.checked:before {
@@ -65,7 +65,7 @@
     display: block;
     width: 1.6rem;
     height: 0;
-    border-top: 1px solid #c7c7c7;
+    border-top: .01rem solid #c7c7c7;
     content: '';
 }
 
@@ -115,7 +115,7 @@
     height: 3.3rem;
     min-width: 9rem;
     padding: 0 1rem;
-    border: 1px solid #d2d2d2;
+    border: .01rem solid #d2d2d2;
     border-radius: 0.2rem;
     text-align: center;
     color: #666;
@@ -125,7 +125,7 @@
 .radio_tag.checked,
 .radio_tag.radio_ckd {
     position: relative;
-    border: 1px #ff5c5c solid;
+    border: .01rem #ff5c5c solid;
     color: #ff5c5c;
 }
 
@@ -157,7 +157,7 @@
 .radio_tag.disabled {
     background: #f4f4f4;
     color: #d6d6d6;
-    border: 1px solid #f4f4f4;
+    border: .01rem solid #f4f4f4;
 }
 
 .checkbox,
@@ -269,7 +269,7 @@
     transition: 0.1s;
     width: 2.7rem;
     height: 2.7rem;
-    border: 1px solid #e5e5e5;
+    border: .01rem solid #e5e5e5;
     border-radius: 2.7rem;
     background: #fff;
     box-sizing: border-box;
@@ -294,7 +294,7 @@
     display: inline-block;
     width: 16px;
     height: 16px;
-    border: 1px #ccc solid;
+    border: .01rem #ccc solid;
     border-radius: 16px
 }
 

@@ -4,7 +4,7 @@
         <div class="goods-list" v-if="$store.state.data.logisticsGoodsInfo.goodsList">
             <div class="list-cont">
                 <div class="img-box">
-                    <img v-if="index<3" v-for="(imgs,index) in $store.state.data.logisticsGoodsInfo.goodsList" v-bind:src="'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='" v-lazyload="imgs.skuThumbImgUrl">
+                    <CImage v-if="index<3" v-for="(imgs,index) in $store.state.data.logisticsGoodsInfo.goodsList" :src="imgs.skuThumbImgUrl"></CImage>
                     <div class="more_point" v-if="$store.state.data.logisticsGoodsInfo.goodsList.length>3"><span></span><span></span><span></span>
                     </div>
                 </div>
@@ -31,8 +31,10 @@
 <script>
     import Vue from 'vue';
     import Lazyload from 'gome-ui-lazyload';
+	import {CImage} from 'gome-ui-kit'
     export default Vue.extend({
         components: {
+			CImage
         },
         data(){
             return{
@@ -85,11 +87,14 @@
             overflow: hidden;
             .flexbox();
             .flexbox.v_center;
-            .img-box img{
-                float: left;
-                width: 0.98rem;
-                margin-right: 0.18rem;
-            }
+            .img-box {
+				.flexbox();
+				img{
+					float: left;
+					width: 0.98rem;
+					margin-right: 0.18rem;
+				}
+			}
         }
     } 
     .goods-list .list-cont{

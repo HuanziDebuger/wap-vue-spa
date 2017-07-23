@@ -26,10 +26,10 @@
     -ms-transform: translateY(-50%) rotate(180deg);
 }
 .list_grp:not(.noborder) li:first-child {
-    border-top: 1px solid #e6e6e6;
+    border-top: .01rem solid #e6e6e6;
 }
 .list_grp:not(.noborder) li:last-child {
-    border-bottom: 1px solid #e6e6e6;
+    border-bottom: .01rem solid #e6e6e6;
 }
 .list_grp li:last-child .content {
     border-bottom: none;
@@ -112,7 +112,7 @@
     flex: 1;
 }
 .list_grp .content {
-    border-bottom: 1px solid #e6e6e6;
+    border-bottom: .01rem solid #e6e6e6;
 }
 .list_grp li:only-child .content {
     border-bottom: none;

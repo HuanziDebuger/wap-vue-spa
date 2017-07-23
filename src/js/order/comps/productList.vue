@@ -237,7 +237,7 @@
             .tag{
                 display:@inlineBlock;
                 color: @red;
-                border: 1px solid @red;
+                border: .01rem solid @red;
                 line-height:1;
                 padding: .02rem .02rem;
                 border-radius: .02rem;
