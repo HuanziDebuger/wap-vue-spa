@@ -2,7 +2,52 @@
  * @Author: zhudanmei 
  * @Date: 2017-01-17 17:31:54 
  * @Last Modified by: zhaoye
- * @Last Modified time: 2017-02-04 12:15:56
+ * @Last Modified time: 2017-07-23 21:24:17
  */
  @import '../../../less/order.less';
  
+ .addr-list {
+        padding-left: @font-sm;
+        li {
+            height: .88rem;
+            line-height: .88rem;
+            .border-bot(@gray-dark-border);
+            padding-right: @font-sm;
+            font-size: .26rem;
+            &:last-child {
+                border-bottom: none;
+            }
+        }      
+        .radio{
+            .set-width-height(1;.88rem;);
+            font-size: .26rem;
+            overflow: hidden;
+            &.active {
+                .check-icon {
+                    float: right;
+                    width: .31rem;
+                    height: .88rem;
+                    //background: url('../../images/red_check.png') no-repeat center;
+                    background-size: contain;
+                    vertical-align: middle;
+                }
+            }
+            .radio-content {
+                font-size: @font-nm;
+                /*color: @gray-dark;*/
+            }
+            p {
+                font-size: .26rem;
+                color: #a2a4a6;
+                padding-left: .64rem;
+                &.number {
+                    margin: -.2rem 0 .1rem 0;
+                }
+                &.shop-info-address {
+                    line-height: .3rem;
+                    margin-bottom: .1rem;
+                    margin-top: -.1rem;
+                }
+            }
+        }
+    }

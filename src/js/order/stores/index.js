@@ -2,7 +2,7 @@
  * @Author: zhaoye 
  * @Date: 2017-01-07 12:22:16 
  * @Last Modified by: zhaoye
- * @Last Modified time: 2017-07-23 21:10:59
+ * @Last Modified time: 2017-07-23 23:16:22
  */
 import Vue from 'vue';
 import Vuex from 'vuex';

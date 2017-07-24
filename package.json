@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "set NODE_ENV=dev && node server/app.js",
-    "build": "set NODE_ENV=production && node bin/build.js"
+    "dev": "set NODE_ENV=dev&& node server/app.js",
+    "build": "set NODE_ENV=production&& node bin/build.js"
   },
   "dependencies": {
     "gome-ui-alert-z": "master",
@@ -14,7 +14,7 @@
     "gome-ui-lazyload": "^1.0.7",
     "gome-ui-gotop-z": "master",
     "gome-ui-modal-z": "master",
-    "gome-ui-kit": "1.1.50",
+    "gome-ui-kit": "1.1.52",
     "gome-ui-share-z": "master",
     "gome-utils-check": "^0.0.1",
     "gome-ui-toast-z": "master",

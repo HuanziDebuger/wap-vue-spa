@@ -1,23 +1,28 @@
 @import '../../less/order.less';
-.type-list .radio{
-    display: inline-block;
-    .border-nm(@input-borcolor);
-    border-radius: .05rem;
-    .set-line-height(1;.66rem;);
-    line-height: .66rem;
-    min-width: 30%;
-    width: auto;
-    margin-right:3.3%;
-    margin-bottom: .24rem;
-    color: @gray;
-    .hor_padding();
-    .boxSizing();
-    text-align: center;
-    &.active{
-        .border-nm(@red);
-        color: @red;
-        background: url("../../images/ico_check.png") no-repeat;
-        background-size: .33rem .32rem;
-    };
-    
-};
+.radio () {
+	.type-list {
+		.radio{
+			display: inline-block;
+			.border-nm(@input-borcolor);
+			border-radius: .05rem;
+			.set-line-height(1;.66rem;);
+			line-height: .66rem;
+			min-width: 30%;
+			width: auto;
+			margin-right:3.3%;
+			margin-bottom: .24rem;
+			color: @gray;
+			.hor_padding();
+			.boxSizing();
+			text-align: center;
+			&.active{
+				.border-nm(@red);
+				color: @red;
+				background: url('../../images/ico_check.png') no-repeat;
+				background-size: .33rem .32rem;
+			};
+			
+		};
+	}
+
+}

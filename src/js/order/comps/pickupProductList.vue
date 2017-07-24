@@ -58,6 +58,7 @@
 </script>
 <style lang='less'>
     @import '../less/order.less';
+	.product-list();
     .tip-cont{
         padding:.16rem .2rem;
         background-color:#fff7d2;

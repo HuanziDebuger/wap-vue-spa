@@ -2,7 +2,7 @@
  * @Author: zhudanmei 
  * @Date: 2017-01-07 12:30:26 
  * @Last Modified by: zhaoye
- * @Last Modified time: 2017-07-22 20:55:18
+ * @Last Modified time: 2017-07-23 21:51:26
  */
 <template>
     <!--发票跳转-->
@@ -608,7 +608,9 @@
 </script>
 <style lang='less'>
     @import '../less/order.less';
-    
+	.pay();
+	@import '../widgets/radio/radio.less';
+	.radio();
     .invoice-cont{
         
         .input-box {

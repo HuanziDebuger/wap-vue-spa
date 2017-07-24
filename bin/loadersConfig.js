@@ -1,5 +1,5 @@
 const argv = require('yargs').argv
-const isProd = process.env.NODE_ENV == 'production'
+const isProd = process.env.NODE_ENV.match(/production/)
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
@@ -14,8 +14,8 @@ module.exports = {
         //     }
         // }
     ],
-    css: /*!isProd ? ['style-loader', 'css-loader']
-                :*/ ExtractTextPlugin.extract({
+    css: !isProd ? ['style-loader', 'css-loader']
+                : ExtractTextPlugin.extract({
                     fallback: "style-loader",
                     use: [
                         {
@@ -26,7 +26,7 @@ module.exports = {
                             }
                         }
                     ]}),
-    less:/* !isProd ? [{
+    less: !isProd ? [{
 		loader: 'style-loader',
 		// options: {
 		// 	singleton: true
@@ -37,7 +37,7 @@ module.exports = {
 			camelCase: true,
 		}
 	}, 'less-loader']
-                : */ ExtractTextPlugin.extract({
+                : ExtractTextPlugin.extract({
                     fallback: "style-loader",
                     use: [
                         {

@@ -2,7 +2,7 @@
  * @Author: zhudanmei 
  * @Date: 2017-01-07 17:37:02 
  * @Last Modified by: zhaoye
- * @Last Modified time: 2017-07-22 19:51:32
+ * @Last Modified time: 2017-07-23 21:51:18
  */
 <template>
     <!--支付方式-->
@@ -233,103 +233,11 @@
 </script>
 <style lang='less'>
     @import '../less/order.less';
+	.pay();
     @import '../widgets/radio/radio.less';
-    #root{
-        background-color: #f2f2f2;
-    }
-    .pay-container {
-        color: @gray-dark;
-        font-size: @font-sm * 1.3;
-        padding-bottom: .7rem;;
-        .order-btn {
-            .fixed-btn();
-            z-index: @z-nm;
-            .btn{
-                .set-line-height(1;.9rem);
-                font-size: @font-lg-sm + .02rem;
-            }
-            
-        }
-        .order-part {
-            padding: .3rem .2rem;
-            background: @white;
-            margin-bottom: @font-sm * 5;
-            .over {
-                overflow: hidden;
-                font-size: .26rem;
-                line-height: .44rem;
-                color: @gray-light;
-                .order-title {
-                    font-size: @font-nm;
-                    margin-bottom: .3rem;
-                    font-weight: 700;
-                    float: left;
-                }
-            }
-            .cash-info {
-                padding: 0;
-                font-size: @font-nm-sm;
-                .step-ulist {
-                    overflow: hidden;
-                    li {
-                        float: left;
-                        height: .66rem;
-                        line-height: .66rem;
-                        margin-right: .06rem;
-                        margin-bottom: @font-sm;
-                    }
-                    .step {
-                        width: 1.2rem;
-                        padding: 0 .04rem;
-                        text-align: center;
-                        border: .01rem solid #d2d2d2;
-                        color: #ffa567;
-                        border-radius: .08rem;
-                    }
-                    .steplink {
-                        color: #9d9896;
-                    }
-                    .stepmore {
-                        line-height: .3rem;
-                    }
-                }
-                .account {
-                    background: #fff4e0;
-                    padding: @font-sm;
-                    margin-top: @font-sm;
-                    margin-bottom: .1rem;
-                    p {
-                        margin-bottom: .1rem;
-                    }
-                    .account-addr {
-                        color: @font-primary-color;
-                    }
-                }
-                .note {
-                    margin-top: .4rem;
-                    h3 {
-                        color: @font-primary-color;
-                        margin-bottom: .1rem;
-                    }
-                    p {
-                        color: @gray-light;
-                        line-height: .3rem;
-                    }
-                }
-            }
-        }
-    }
-    .pay-type,.send-type{
-        background-color: @white;
-        .module();
-        padding: (@font-sm * 1.5) @font-sm (@font-sm * .3);
-        .title{
-            color: @gray-light;
-            font-size: @font-nm;
-            margin-bottom: @font-sm * 1.5;
-            font-weight: 700;
-        };
-    }
+	.radio();
+    
+    
     .pay-store{
         .module_padding();
         background-color: @white;

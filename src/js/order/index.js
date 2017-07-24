@@ -2,7 +2,7 @@
  * @Author: zhaoye 
  * @Date: 2017-01-07 12:30:57 
  * @Last Modified by: zhaoye
- * @Last Modified time: 2017-07-23 00:16:02
+ * @Last Modified time: 2017-07-24 00:36:52
  */
 
 // import 'babel-polyfill';
@@ -32,7 +32,7 @@ $g.ready(() => {
     $g.setTitle('填写订单页')
     $g.setShareInfo({link:'',title:'',imageUrl:'',shareDesc:''})
 })
-
+import eventbus from 'gome-utils-eventbus'
 const router = new VueRouter({
   routes: [
       {
@@ -133,7 +133,6 @@ const app = new Vue({
 //     store,
 // 	render: h => h(test)
 // })
-
 
 
 const gotop = new Gotop()

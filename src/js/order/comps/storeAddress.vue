@@ -2,14 +2,14 @@
  * @Author: zhudanmei 
  * @Date: 2017-01-22 11:47:29 
  * @Last Modified by: zhaoye
- * @Last Modified time: 2017-07-22 22:10:30
+ * @Last Modified time: 2017-07-24 00:37:30
  * 门店四级地址选择页面
  */
 <template>
     <!--地址模块-->
     <page>
         <navigator>选择自提门店</navigator>
-        <div class="tip-cont"><p><span class="tip-icon"></span>{{$store.state.data.declareInfos[0].value}}</p></div>
+        <div v-if="$store.state.data" class="tip-cont"><p><span class="tip-icon"></span>{{$store.state.data.declareInfos[0].value}}</p></div>
         <div class="add-address ">
             <div class="item address-area" @click="editAddress(2)">
                 <span class="title">所在区域：</span>
@@ -108,7 +108,8 @@
             /*请求四级接口*/
             this.$store.commit('setAddressType', 'store');
 
-            this.setAddressCode()
+	        this.setAddressCode()
+			
             this.updateAddressList()
             
             //侦听,取第四级别
@@ -174,7 +175,7 @@
                 data.coordinateName = 'google' || '';
                 
 
-                http({
+                return http({
                     url: '//' + window.location.host + '/public/addressArea',
                     type: 'post',
                     data
@@ -277,7 +278,36 @@
 </script>
 <style lang='less'>
 @import '../less/order.less';
-
+@import '../widgets/addressSelector/less/addessSelect.less';
+.addr-list {
+	.radio {
+		&.shop-info-list {
+			position: relative;
+			.radio-content {
+				padding-left: .64rem;
+				.flexbox.v_center;
+				&::before {
+					content: '';
+					position: absolute;
+					bottom: -.03rem;
+					left: 0;
+					width: .44rem;
+					height: .44rem;
+					background: url('../images/check_no.png') no-repeat;
+					background-size: contain;
+				}
+			}
+			&.active {
+				.radio-content {
+					&::before {
+						background: url('../images/check_yes.png') no-repeat;
+						background-size: contain;
+					}
+				}
+			}
+		}
+	}
+}
 .address-area{
     .flexbox();
     background-color: @white;

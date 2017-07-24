@@ -2,7 +2,7 @@
  * @Author: zhudanmei 
  * @Date: 2017-01-19 17:29:01 
  * @Last Modified by: zhaoye
- * @Last Modified time: 2017-07-22 20:57:19
+ * @Last Modified time: 2017-07-23 21:40:15
  */
 <template>
 	<div class="sendTime-moudle" v-if="$store.state.$productList.data">
@@ -316,6 +316,8 @@
 
 <style lang='less'>
     @import '../../less/order.less';
+	@import '../../widgets/radio/radio.less';
+	.radio();
     .time-picker {
         .window {
             width: 90% !important;

@@ -2,7 +2,7 @@
  * @Author: zhudanmei 
  * @Date: 2017-01-18 16:32:47 
  * @Last Modified by: zhaoye
- * @Last Modified time: 2017-07-23 00:48:34
+ * @Last Modified time: 2017-07-24 00:59:16
 
  */
 <template>
@@ -202,11 +202,10 @@
                 }
             },
            showPosition(position){
-
-                this.$store.state.latitude = position.coords.latitude
-                this.$store.state.longitude = position.coords.longitude    
-
-
+				if(position && position.coords){
+					this.$store.state.latitude = position.coords.latitude
+	                this.$store.state.longitude = position.coords.longitude
+				}
             },
             //提交订单时先判断是否需要支付密码和设置支付密码
             submit(){
@@ -312,7 +311,7 @@
 				}
             },
             updateEntryData () {
-                /*订单接口v3接口*/
+                /*订单接口v3接口*/	
                 http({
                     url: '//' + location.host +'/order_ajax.html',
                     type: 'post',
@@ -543,13 +542,15 @@
     .pay-money {
         .fixed-btn();
         .set-line-height(1;.92rem;);
-        .btn{
-            line-height: .92rem;
-            width: 2rem;
-            box-sizing: border-box;
-            text-align: center;
-            font-size:@font-lg-sm;
-            border-radius: 0;
+        .btn {
+			&.default {
+				line-height: .92rem;
+				width: 2rem;
+				box-sizing: border-box;
+				text-align: center;
+				font-size:@font-lg-sm;
+				border-radius: 0;
+			}
         };
         p{
             font-size: .3rem;

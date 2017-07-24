@@ -1,8 +1,8 @@
 /*
  * @Author: zhaoye 
  * @Date: 2017-02-04 12:15:13 
- * @Last Modified by: zhudanmei
- * @Last Modified time: 2017-04-17 16:08:37
+ * @Last Modified by: zhaoye
+ * @Last Modified time: 2017-07-23 21:24:50
 
  */
 <template>
@@ -162,81 +162,16 @@
     })
 </script>
 <style lang='less'>
-     @import './less/addessSelect.less';
+    @import './less/addessSelect.less';
     .addr-list {
-        padding-left: @font-sm;
-        li {
-            height: .88rem;
-            line-height: .88rem;
-            .border-bot(@gray-dark-border);
-            padding-right: @font-sm;
-            font-size: .26rem;
-            &:last-child {
-                border-bottom: none;
-            }
-        }      
-        .radio{
-            .set-width-height(1;.88rem;);
-            font-size: .26rem;
-            overflow: hidden;
-            &.shop-info-list {
-                position: relative;
-                .radio-content {
-                    padding-left: .64rem;
-                    .flexbox.v_center;
-                    &::before {
-                        content: '';
-                        position: absolute;
-                        bottom: -.03rem;
-                        left: 0;
-                        // width: .32rem;
-                        // height: .32rem;
-                        // background: url('../../images/radio_no.png') no-repeat;
-                        width: .44rem;
-                        height: .44rem;
-                        background: url('../../images/check_no.png') no-repeat;
-                        background-size: contain;
-                    }
-                }
-                &.active {
-                    .radio-content {
-                        &::before {
-                            //background: url('../../images/radio_yes.png') no-repeat;
-                            background: url('../../images/check_yes.png') no-repeat;
-                            background-size: contain;
-                        }
-                    }
-                }
-            }
+		.radio{
             &.active {
                 .check-icon {
-                    float: right;
-                    width: .31rem;
-                    height: .88rem;
                     background: url('../../images/red_check.png') no-repeat center;
-                    background-size: contain;
-                    vertical-align: middle;
                 }
             }
-            .radio-content {
-                font-size: @font-nm;
-                /*color: @gray-dark;*/
-            }
-            p {
-                font-size: .26rem;
-                color: #a2a4a6;
-                padding-left: .64rem;
-                &.number {
-                    margin: -.2rem 0 .1rem 0;
-                }
-                &.shop-info-address {
-                    line-height: .3rem;
-                    margin-bottom: .1rem;
-                    margin-top: -.1rem;
-                }
-            }
-        }
-    }
+		}
+	}
     .logistics_distribution {
         margin-top: @font-sm * 10;
         text-align: center;

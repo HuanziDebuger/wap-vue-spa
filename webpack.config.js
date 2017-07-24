@@ -2,7 +2,7 @@
  * @Author: zhaoye 
  * @Date: 2017-06-17 19:49:38 
  * @Last Modified by: zhaoye
- * @Last Modified time: 2017-07-23 21:12:40
+ * @Last Modified time: 2017-07-24 13:33:24
  */
 const Promise = require('bluebird')
 const webpack = require('webpack')
@@ -14,19 +14,13 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const fslist = require('ls-all')
-const isProd = process.env.NODE_ENV == 'production'
+const isProd = process.env.NODE_ENV.match(/production/)
 const loaderConfig = require('./bin/loadersConfig.js')
 
 function webpackConfig ({ entries }) {
     const config  = {
         resolveLoader: {
             moduleExtensions: ["-loader"]
-        },
-        resolve: {
-            alias: {
-                 vue: 'vue/dist/vue.runtime.esm.js',
-				// 'gome-ui-kit': 'D:\\workspace\\gome-ui-kit\\index.js'
-            }
         },
         module: {
             rules: [
@@ -82,7 +76,7 @@ function webpackConfig ({ entries }) {
                     test: /^((?!(gome-ui-kit)).)*\.(png|jp[e]?g|bmp|gif)$/,
                     use: [
                         {
-                            loader: 'url-loader?name=[path]/[name].[ext]?v=[hash]&publicPath=//img.gomein.net.cn/plus/&outputPath=images/&limit=5000'
+                            loader: 'url-loader?name=[path]/[name].[ext]?v=[hash]&publicPath=//img.gomein.net.cn/plus/&outputPath=images&limit=5000'
                         }
                     ]
                 }
@@ -90,21 +84,22 @@ function webpackConfig ({ entries }) {
         },
         plugins: [
             new webpack.optimize.CommonsChunkPlugin({
-                 names: [ 'CommonsChunk/bridge','CommonsChunk/utils','CommonsChunk/uiKit']
+                 names: [ 'CommonsChunk/bridge','CommonsChunk/uiKit', 'CommonsChunk/utils']
             }),
             new webpack.DllReferencePlugin({
                 context: __dirname,
                 manifest: require('./node_modules/gome-vue-vendor/gomeVueVendor-manifest.json')
             }),
-            new webpack.HotModuleReplacementPlugin(),
-            new webpack.NoEmitOnErrorsPlugin(),
-            new FriendlyErrorsPlugin()
         ]
     }
     //配置入口
     config.entry = {}
     config.entry['CommonsChunk/bridge'] = [
         'gome-bridge',
+    ]
+    config.entry['CommonsChunk/uiKit'] = [
+        'gome-ui-kit',
+        'gome-ui-lazyload',
     ]
     config.entry['CommonsChunk/utils'] = [
         'gome-utils-base64',
@@ -116,46 +111,45 @@ function webpackConfig ({ entries }) {
         'gome-utils-http-filters',
         'gome-utils-query'
     ]
-    config.entry['CommonsChunk/uiKit'] = [
-        'gome-ui-kit',
-        'gome-ui-lazyload',
-    ]
     for(var key in entries){
         config.entry[key.replace(/\.js/,'')] = [entries[key]]
     }
     //配置出口
     config.output = {
-        publicPath: '/',
+        publicPath: !isProd ? '/' : '',
         path: path.resolve(__dirname, `dist`),
         filename: `js/[name].js`,
     }
-    config.devtool = 'source-map'
-	config.plugins.push(new ExtractTextPlugin({
-			filename: 'style/[name].css',
-			disable: false,
-			allChunks: true,
-		}))
-	config.plugins.push(new OptimizeCssAssetsPlugin({
-		cssProcessor: require('cssnano'),
-		cssProcessorOptions: { discardComments: {removeAll: true } },
-		canPrint: true
-	}))
+    config.devtool = 'module-source-map'
 		
 	config.plugins.push(new UglifyJSPlugin({
 		sourceMap: true,
 		comments: false
 	}))
+	
     //区别环境
     if(!isProd){
-        config.entry['CommonsChunk/uiKit'].push('./lib/hotReloadEntry.js')
-		
-       
+        config.entry['CommonsChunk/utils'].push('./lib/hotReloadEntry.js')
+		config.plugins.push(new webpack.HotModuleReplacementPlugin())
+		config.plugins.push(new webpack.NoEmitOnErrorsPlugin())
+		config.plugins.push(new FriendlyErrorsPlugin())
     }else{
-        config.plugins.push(new webpack.DefinePlugin({
-                'process.env':{
-                    NODE_ENV: `${process.env.NODE_ENV}`
-                }
-            }))
+		config.plugins.push(new webpack.DefinePlugin({
+			'process.env':{
+				NODE_ENV: "'"+ `${process.env.NODE_ENV.trim()}` +"'"
+			}
+		}))
+		config.plugins.push(new ExtractTextPlugin({
+			filename: 'style/[name].css',
+			disable: false,
+			allChunks: true,
+		}))
+		config.plugins.push(new OptimizeCssAssetsPlugin({
+			cssProcessor: require('cssnano'),
+			cssProcessorOptions: { discardComments: {removeAll: true } },
+			canPrint: true
+		}))
+		
     }
     return config
 }
