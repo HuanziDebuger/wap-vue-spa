@@ -2,7 +2,7 @@
  * @Author: zhaoye 
  * @Date: 2017-07-04 17:02:36 
  * @Last Modified by: zhaoye
- * @Last Modified time: 2017-07-04 20:45:35
+ * @Last Modified time: 2017-07-27 18:47:45
  */
 const express = require('express');
 const path = require('path')
@@ -12,8 +12,12 @@ const less = require('less')
 
 
 module.exports = function(router){
-    router.get('/*.css$', (req, res, next) => {
-        const filename = path.resolve(__dirname, '../../src', req.path.replace(/^\//,'').replace('.css', '.less'))
+    router.get('*.css|*.css.map', (req, res, next) => {
+        let filename
+        filename = path.resolve(__dirname, '../../src', req.path.replace(/^\//,'').replace('.css', '.less'))
+        if(req.url.match(/node_modules/)){
+            filename = path.resolve(__dirname, '../../', req.path.replace(/^(.*)node_modules/,'node_modules'))
+        }
         if(fs.existsSync(filename)){
             fs.readFile(filename, (err, chunk) => {
                 const content = String(chunk)

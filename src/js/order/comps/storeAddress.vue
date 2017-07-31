@@ -384,8 +384,27 @@
     }
     .logistics_distribution{
         margin-top: 0;
+        text-align: center;
+        font-size: .26rem;
+        color: #666;
+        p {
+            margin-top: .2rem;
+        }
+        button {
+            width: 2.8rem;
+            height: .72rem;
+            line-height: .72rem;
+            text-align: center;
+            font-size: .3rem;
+            background-color: @theme;
+            color: @white;
+            margin-top: .3rem;
+            border-radius: .4rem;
+        }
     }
+    
 }
+
 /*覆盖控件样式*/
 .store-list.addr-list .radio .radio-content{
     font-size: @font-nm + .02rem;

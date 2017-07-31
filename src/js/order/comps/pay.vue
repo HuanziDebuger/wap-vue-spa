@@ -1,8 +1,8 @@
 /*
  * @Author: zhudanmei 
  * @Date: 2017-01-07 17:37:02 
- * @Last Modified by: zhaoye
- * @Last Modified time: 2017-07-23 21:51:18
+ * @Last Modified by: zhudanmei
+ * @Last Modified time: 2017-07-24 13:48:07
  */
 <template>
     <!--支付方式-->
@@ -236,8 +236,6 @@
 	.pay();
     @import '../widgets/radio/radio.less';
 	.radio();
-    
-    
     .pay-store{
         .module_padding();
         background-color: @white;

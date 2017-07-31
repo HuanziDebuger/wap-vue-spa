@@ -1,8 +1,8 @@
 /*
  * @Author: zhudanmei 
  * @Date: 2017-01-18 16:32:47 
- * @Last Modified by: zhaoye
- * @Last Modified time: 2017-07-24 00:59:16
+ * @Last Modified by: zhudanmei
+ * @Last Modified time: 2017-07-24 13:47:22
 
  */
 <template>
@@ -155,7 +155,7 @@
                     wx.ready(function(){
                         // 分享给朋友
                         wx.onMenuShareAppMessage({
-                            title: "国美Plus-买家电、3C、日用百货,享正品低价，39元包邮，货到付款！",
+                            title: "国美-买家电、3C、日用百货,享正品低价，39元包邮，货到付款！",
                             desc: '家电标杆，更低价格，39元包邮，货到付款，国美为您提供专业、贴心、便捷的服务。',
                             link: 'http://'+wxAPIHost+'/',
                             imgUrl: imgUrl,
@@ -163,7 +163,7 @@
                         });
                         // 分享到朋友圈
                         wx.onMenuShareTimeline({
-                            title: "国美Plus-买家电、3C、日用百货,享正品低价，39元包邮，货到付款！", // 分享标题
+                            title: "国美-买家电、3C、日用百货,享正品低价，39元包邮，货到付款！", // 分享标题
                             link: 'http://'+wxAPIHost+'/',
                             imgUrl: imgUrl, // 分享图标
                         });
@@ -490,7 +490,7 @@
     .alert .window {
         border-radius: .15rem;
         .title{
-            font-size:.32rem;
+            font-size:.32rem !important;
             padding:0;
         }
         .content{

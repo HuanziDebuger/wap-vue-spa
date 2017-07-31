@@ -2,7 +2,7 @@
  * @Author: zhaoye 
  * @Date: 2017-04-12 13:22:56 
  * @Last Modified by: zhaoye
- * @Last Modified time: 2017-07-22 03:35:43
+ * @Last Modified time: 2017-07-17 16:28:40
  */
 const express = require('express')
 const app = new express
@@ -78,7 +78,6 @@ fslist([path.resolve(__dirname, '../src')], {recurse: true, flatten: true})
         app.use(webpackMiddleware(
             compiler
             ,{
-					host: 'http://192.168.1.71',
                     quiet: true,
                     // noInfo: true,
                     // watchOptions: {

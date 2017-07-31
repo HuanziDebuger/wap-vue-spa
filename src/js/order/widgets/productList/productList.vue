@@ -2,7 +2,7 @@
  * @Author: zhaoye 
  * @Date: 2017-02-04 10:11:37 
  * @Last Modified by: zhudanmei
- * @Last Modified time: 2017-03-02 10:55:22
+ * @Last Modified time: 2017-07-21 18:38:14
  */
 <template>
     <div class="product-list" v-if="source">
@@ -43,7 +43,7 @@
                             <p class="present" v-for="promotion in product.itemPromList">
                                 <span class="tag-zp">[{{promotion.promLabel}}]</span><span class="promDesc">{{promotion.promDesc}}</span>
                             </p>
-                            <div >
+                            <div class="th-reason-contanier">
                                 <p class="th-reason" v-for="Service in product.supportService">
                                     <img v-if="Service.serviceType == '7'" src="../../images/icon_7.png" >
                                     <img v-if="Service.serviceType == '6'" src="../../images/icon_6.png">
@@ -51,6 +51,7 @@
                                     <em :class="[Service.serviceType == '7' ? 'redtext' : '']">{{Service.serviceDesc}}</em>
                                 </p>
                             </div>
+                            <div class="installation-content" v-if="product.installDesc && product.installDesc!=='' ">{{product.installDesc}}<a :href="call(product.installTel)">{{product.installTel}}</a></div>
                         </div>
                     </product>
                 </li>
@@ -125,6 +126,10 @@
             onShippingMethod(method,shopindex){
                this.$store.state.$productList.shippingMethod[shopindex] = method.shippingMethod;
                  
+            },
+            /*电话**/
+            call(telphone){
+                return 'tel:'+telphone;
             },
         }
     })

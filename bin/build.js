@@ -2,7 +2,7 @@
  * @Author: zhaoye 
  * @Date: 2017-06-29 13:44:21 
  * @Last Modified by: zhaoye
- * @Last Modified time: 2017-07-17 16:32:22
+ * @Last Modified time: 2017-07-27 11:34:10
  */
 const webpackConfig = require('../webpack.config.js')
 const webpack = require('webpack')
@@ -98,6 +98,15 @@ gulp.src(getRealSrc(entryrc.legacy.views, 'views'))
                 cb(null, file)
             }))
             .pipe(gulp.dest(path.resolve(__dirname, '../dist/js')))
+        
+        //images just copy
+        gulp.src(getRealSrc(entryrc.legacy.images, 'images'))
+            .pipe(through.obj((file, enc, cb) => {
+                //根目录矫正
+                file.base = path.join(file.cwd, 'src/images')
+                cb(null, file)
+            }))
+            .pipe(gulp.dest(path.resolve(__dirname, '../dist/images')))
     })
 
 

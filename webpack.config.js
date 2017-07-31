@@ -2,7 +2,7 @@
  * @Author: zhaoye 
  * @Date: 2017-06-17 19:49:38 
  * @Last Modified by: zhaoye
- * @Last Modified time: 2017-07-24 13:33:24
+ * @Last Modified time: 2017-07-27 11:08:35
  */
 const Promise = require('bluebird')
 const webpack = require('webpack')
@@ -12,7 +12,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const fslist = require('ls-all')
 const isProd = process.env.NODE_ENV.match(/production/)
 const loaderConfig = require('./bin/loadersConfig.js')
@@ -76,41 +76,41 @@ function webpackConfig ({ entries }) {
                     test: /^((?!(gome-ui-kit)).)*\.(png|jp[e]?g|bmp|gif)$/,
                     use: [
                         {
-                            loader: 'url-loader?name=[path]/[name].[ext]?v=[hash]&publicPath=//img.gomein.net.cn/plus/&outputPath=images&limit=5000'
+                            loader: 'url-loader?name=[path]/[name].[ext]?v=[hash]&publicPath=//img.gomein.net.cn/plus/&outputPath=images/&limit=5000'
                         }
                     ]
                 }
             ]
         },
         plugins: [
-            new webpack.optimize.CommonsChunkPlugin({
-                 names: [ 'CommonsChunk/bridge','CommonsChunk/uiKit', 'CommonsChunk/utils']
+            new webpack.DllReferencePlugin({
+                context: __dirname,
+                manifest: require('./node_modules/gome-vue-vendor/gomeVueVendor-full-manifest.json')
             }),
             new webpack.DllReferencePlugin({
                 context: __dirname,
                 manifest: require('./node_modules/gome-vue-vendor/gomeVueVendor-manifest.json')
             }),
+            new webpack.DllReferencePlugin({
+                context: __dirname,
+                manifest: require('./node_modules/gome-dll-utils/gomeDLLUtils-v1-manifest.json')
+            }),
+            new webpack.DllReferencePlugin({
+                context: __dirname,
+                manifest: require('./node_modules/gome-dll-bridge/gomeBridge-v1-manifest.json')
+            }),
+            new webpack.DllReferencePlugin({
+                context: __dirname,
+                manifest: require('./node_modules/gome-dll-ui-kit/gomeDLLUIKit-v1-manifest.json')
+            }),
         ]
     }
     //配置入口
     config.entry = {}
-    config.entry['CommonsChunk/bridge'] = [
-        'gome-bridge',
-    ]
-    config.entry['CommonsChunk/uiKit'] = [
-        'gome-ui-kit',
-        'gome-ui-lazyload',
-    ]
-    config.entry['CommonsChunk/utils'] = [
-        'gome-utils-base64',
-        'gome-utils-cookie',
-        'gome-utils-env',
-        'gome-utils-eventbus',
-        'gome-utils-host',
-        'gome-utils-http',
-        'gome-utils-http-filters',
-        'gome-utils-query'
-    ]
+  
+    if(!isProd){
+        config.entry['hot'] = './lib/hotReloadEntry.js'
+    }
     for(var key in entries){
         config.entry[key.replace(/\.js/,'')] = [entries[key]]
     }
@@ -129,7 +129,6 @@ function webpackConfig ({ entries }) {
 	
     //区别环境
     if(!isProd){
-        config.entry['CommonsChunk/utils'].push('./lib/hotReloadEntry.js')
 		config.plugins.push(new webpack.HotModuleReplacementPlugin())
 		config.plugins.push(new webpack.NoEmitOnErrorsPlugin())
 		config.plugins.push(new FriendlyErrorsPlugin())

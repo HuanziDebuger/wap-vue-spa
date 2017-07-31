@@ -7,12 +7,12 @@ module.exports = {
         {
             loader: 'babel-loader'
         },
-        // {
-        //     loader: 'eslint-loader',
-        //     options: {
-        //         failOnError: true
-        //     }
-        // }
+        {
+            loader: 'eslint-loader',
+            options: {
+                failOnError: true
+            }
+        }
     ],
     css: !isProd ? ['style-loader', 'css-loader']
                 : ExtractTextPlugin.extract({
@@ -21,31 +21,16 @@ module.exports = {
                         {
                             loader: 'css-loader',
                             options: {
-								camelCase: true,
                                 minimize: true
                             }
                         }
                     ]}),
-    less: !isProd ? [{
-		loader: 'style-loader',
-		// options: {
-		// 	singleton: true
-		// }
-	}, {
-		loader:'css-loader',
-		options: {
-			camelCase: true,
-		}
-	}, 'less-loader']
-                : ExtractTextPlugin.extract({
+    less: !isProd ? ['style-loader', 'css-loader', 'less-loader']
+                :  ExtractTextPlugin.extract({
                     fallback: "style-loader",
                     use: [
                         {
-                            loader: 'css-loader',
-							options: {
-								camelCase: true,
-                                minimize: true
-							}
+                            loader: 'css-loader'
                         },
                         {
                             loader: 'less-loader',

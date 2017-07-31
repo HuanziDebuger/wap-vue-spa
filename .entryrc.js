@@ -14,5 +14,6 @@ module.exports = {
         js: [
             // 'demo/legacy/**/*'
             ],
+        images: []
     }
 }
