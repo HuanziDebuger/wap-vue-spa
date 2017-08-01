@@ -1,8 +1,8 @@
 /*
  * @Author: zhudanmei 
  * @Date: 2017-02-23 16:34:55 
- * @Last Modified by: zhaoye
- * @Last Modified time: 2017-07-22 11:41:41
+ * @Last Modified by: zhudanmei
+ * @Last Modified time: 2017-07-31 17:28:08
  */
  <template>
     <div>
@@ -105,7 +105,7 @@ export default Vue.extend({
         }
         .password-content{
             margin: .2rem 0;
-            border: .01rem solid #e6e6e6;
+            border: .02rem solid #e6e6e6;
            
             input{
                 width: 100%;

@@ -1,8 +1,8 @@
 /*
  * @Author: zhudanmei 
  * @Date: 2017-01-19 17:29:01 
- * @Last Modified by: zhaoye
- * @Last Modified time: 2017-07-23 21:40:15
+ * @Last Modified by: zhudanmei
+ * @Last Modified time: 2017-07-31 17:28:06
  */
 <template>
 	<div class="sendTime-moudle" v-if="$store.state.$productList.data">
@@ -402,7 +402,7 @@
     .show-smi-time,{
         dt {
             line-height: .72rem;
-            border-bottom: .01rem solid #ccc;
+            border-bottom: .02rem solid #ccc;
             font-size: .26rem;
             background: url(../../images/time_icon.png) no-repeat .2rem center;
             background-size: .26rem .26rem;
