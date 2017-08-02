@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../public/head.ejs %>
+    <% include ../public/meta.ejs %>
+    <% include ../public/font.ejs %>
+    <title>凑单</title>
+    <link rel="stylesheet" href="{CSS_CDN_IP}/node_modules/gome-dll-ui-kit/dist/v1/uiKit.css">
+    <style>
+        .loading-container {
+            z-index: 999999;
+        }
+    </style>
+</head>
+<body>
+    <div id="pre-loading" class="loading-container"><div class="loading-wrapper"><div class="loading loading_play"></div> <p class="loading-tip">使劲加载中…</p></div></div>
+    <div id="app"></div>
+        
+    <script type="text/javascript">
+        var act_id = "";
+        var sourse = "1";
+        var app_cdn = "//app.gomein.net.cn/plus/images";
+        var crossShop = "0";
+        var isNpop  = "N";
+        var isKdpPromotion = "N";
+        var promId = "P2988541";
+    </script>
+
+<!--@start-->
+<!--@compile:js-->
+<!--@path:{JS_CDN_IP}/node_modules/-->
+    <script src="{JS_CDN_IP}/node_modules/gome-vue-vendor/dist/2.3.4/vendor.full.js"></script>
+    <script src="{JS_CDN_IP}/node_modules/gome-dll-utils/dist/v1/utils.js"></script>
+    <script src="{JS_CDN_IP}/node_modules/gome-dll-ui-kit/dist/v1/uiKit.js"></script>
+    <script src="{JS_CDN_IP}/node_modules/gome-dll-bridge/dist/v1/bridge.js"></script>
+    <!--@start-->
+    <!--@compile:js-->
+    <!--@file:{JS_CDN_IP}/shop_cart/index.js-->
+    <script src="{JS_CDN_IP}/join_order/index.js"></script>
+    <!--@end-->
+<!--@end-->
+</body>
+</html>
