@@ -2,7 +2,8 @@ module.exports = {
     path: __dirname + '/src/js',
     entries: [
         //'demo/index.js',
-        'order/index.js'
+        'order/index.js',
+        'join_order/index.js'
     ],
     legacy: {
         views: [

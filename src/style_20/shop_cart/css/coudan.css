@@ -23,17 +23,17 @@
     box-align: center;
     align-items: center;
     -webkit-align-items: center;
-    padding: 0 0.12rem;
+    padding: 0 .5rem;
     overflow: hidden;
 }
 .tab_nav ul li a.item_all_category span{
-    height: 1.03rem;
+    height: 4.4rem;
     width: 1%;
 }
 .tab_nav ul li a .fold_icon {
     display: block;
-    font-size: 0.21rem;
-    margin-left: 0.12rem;
+    font-size: .9rem;
+    margin-left: .5rem;
     color: #cfcfcf;
 }
 
@@ -52,34 +52,34 @@
 }
 .tab_nav ul li a .order_icon {
     display: block;
-    width: 0.23rem;
-    height: 0.33rem;
-    background: url('../images/price_gray.png') 0 0.02rem no-repeat;
-    background-size: 0.23rem auto;
-    margin-left: 0.12rem;
+    width: 1rem;
+    height: 1.4rem;
+    background: url('../images/price_gray.png') 0 .1rem no-repeat;
+    background-size: 1rem auto;
+    margin-left: .5rem;
 }
 
 .tab_nav ul li a .order_icon.down {
-    background: url('../images/price_down_icon.png') 0 0.02rem no-repeat;
-    background-size: 0.23rem auto;
+    background: url('../images/price_down_icon.png') 0 .1rem no-repeat;
+    background-size: 1rem auto;
 }
 
 .tab_nav ul li a .order_icon.up {
-    background: url('../images/price_up_icon.png') 0 0.02rem no-repeat;
-    background-size: 0.23rem auto;
+    background: url('../images/price_up_icon.png') 0 .1rem no-repeat;
+    background-size: 1rem auto;
 }
 
 .desc_tit {
-    line-height: 0.68rem;
-    padding: 0 0.23rem;
+    line-height: 2.9rem;
+    padding: 0 1rem;
     color: #666;
-    font-size: 0.30rem;
+    font-size: 1.3rem;
 }
 .goods_list {
-    margin-bottom: 0.23rem;
+    margin-bottom: 1rem;
 }
 .goods_list_box {
-    margin-bottom: 1.64rem;
+    margin-bottom: 7rem;
 }
 
 .goods_list li a{
@@ -88,19 +88,19 @@
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    padding: 0.23rem 0 0 0.12rem;
+    padding: 1rem 0 0 .5rem;
     background: #fff;
 }
 
 .goods_list li .pic_box {
-    width: 2.11rem;
-    height: 2.11rem;
-    margin-right: 0.23rem;
+    width: 9rem;
+    height: 9rem;
+    margin-right: 1rem;
 }
 
 .goods_list li .info_box {
-    padding-right: 0.23rem;
-    padding-bottom: 0.70rem;
+    padding-right: 1rem;
+    padding-bottom: 3rem;
     border-bottom: 1px solid #e6e6e6;
     overflow: hidden;
 }
@@ -108,31 +108,31 @@
     border: none;
 }
 .goods_list li .info_box .title {
-    height: 0.70rem;
-    line-height: 0.35rem;
-    margin-bottom: 0.23rem;
-    font-size: 0.30rem;
+    height: 3rem;
+    line-height: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
     overflow: hidden;
 }
 
 .goods_list li .tag {
     display: inline-block;
-    height: 0.28rem;
-    font-size: 0.23rem;
-    padding: 0 0.05rem;
-    line-height:0.30rem;
-    margin-right: 0.05rem;
+    height: 1.2rem;
+    font-size: 1rem;
+    padding: 0 .2rem;
+    line-height:1.3rem;
+    margin-right: .2rem;
     border: 1px solid #ff5c5c;
     border-radius: 2px;
     color: #ff5c5c;
 }
 .goods_list li .info_box .price_box{
-    margin-bottom: 0.12rem;
+    margin-bottom: .5rem;
 }
 .goods_list li .info_box .price {
     color: #ff5c5c;
-    font-size: 0.40rem;
-    margin-right: 0.12rem;
+    font-size: 1.7rem;
+    margin-right: .5rem;
 }
 
 .goods_list li .info_box .comm_num {
@@ -143,19 +143,19 @@
 }
 .goods_list li .add_shop_btn {
     position: absolute;
-    right: 0.00rem;
-    bottom: 0.00rem;
-    width: 0.66rem;
-    height: 0.66rem;
-    line-height: 0.66rem;
+    right: 0rem;
+    bottom: 0rem;
+    width: 2.8rem;
+    height: 2.8rem;
+    line-height: 2.8rem;
     text-align: center;
-/*    padding: 0.09rem;*/
+/*    padding: .4rem;*/
     border: 1px solid #e6e6e6;
     border-radius: 100%;
     color: #ff5c5c;
-    font-size: 0.42rem;
+    font-size: 1.8rem;
     box-sizing:border-box;
-    margin:0.23rem;
+    margin:1rem;
 }
 
 .fixed_btn_box {
@@ -163,7 +163,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 1.17rem;
+    height: 5rem;
     background:#f9f9f9;
     border-top: 1px solid #e6e6e6;
 }
@@ -175,25 +175,25 @@
 .fixed_btn_box .price_info_box {
     color: #666;
     text-align: right;
-    padding-right: 0.19rem;
+    padding-right: .8rem;
 }
 
 .fixed_btn_box .price_info_box p:first-child {
-    font-size: 0.35rem;
+    font-size: 1.5rem;
     color: #333;
 }
 .fixed_btn_box .price_info_box p:last-child{
-    font-size: 0.28rem;
+    font-size: 1.2rem;
 }
 .fixed_btn_box .price_info_box p:first-child em.all {
     color: #ff5c5c;
-    font-size: 0.38rem;
+    font-size: 1.6rem;
 }
 
 .tab_nav_container {
     position: relative;
     width: 100%;
-    height: 1.03rem;
+    height: 4.4rem;
 }
 
 .tab_nav_container .tab_nav {
@@ -205,7 +205,7 @@
 .tab_nav_container .category_mask {
     display: none;
     position: fixed;
-    top: 2.06rem;
+    top: 8.8rem;
     left: 0;
     right: 0;
     bottom: 0;
@@ -220,12 +220,12 @@
 .category_container {
     display: none;
     position: absolute;
-    top: 1.03rem;
+    top: 4.4rem;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 9;
-    height: 7.03rem;
+    height: 30rem;
     background: #fff;
     overflow: hidden;
 }
@@ -250,9 +250,9 @@
 .category_container .main_nav_box li a,
 .category_container .sub_nav_box li a {
     display: block;
-    padding-left: 0.38rem;
-    line-height: 0.89rem;
-    font-size: 0.33rem;
+    padding-left: 1.6rem;
+    line-height: 3.8rem;
+    font-size: 1.4rem;
     box-sizing: border-box;
 }
 
@@ -271,14 +271,14 @@
 }
 .icon_tag_box {
     display: inline-block;
-    height: 0.33rem;
-    line-height: 0.33rem;
+    height: 1.4rem;
+    line-height: 1.4rem;
     background: #fff;
     color: #ff5c5c;
-    font-size: 0.28rem;
+    font-size: 1.2rem;
     border: 1px solid #ff5c5c;
     border-radius: 2px;
-    padding-right: 0.05rem;
+    padding-right: .2rem;
     overflow: hidden;
 }
 .icon_tag_box i {
@@ -294,34 +294,34 @@
     -webkit-box-pack: center;
     justify-content: center;
     -webkit-justify-content: center;
-    width: 0.33rem;
+    width: 1.4rem;
     height: 100%;
     text-align: center;
     background: #ff5c5c;
     color: #fff;
-    margin-right: 0.05rem;
-    font-size: 0.26rem;
+    margin-right: .2rem;
+    font-size: 1.1rem;
     border-radius: 0;
 }
 .loading-container{
     transition: opacity .25s;
     opacity: 1;
     position: relative;
-    min-height: 0.70rem;
-    margin-top: 0.23rem;
+    min-height: 3rem;
+    margin-top: 1rem;
     color: #999;
-    font-size: 0.47rem;
-    margin-bottom: 1.41rem;
+    font-size: 2rem;
+    margin-bottom: 6rem;
 }
 
 .loading-indicator {
     animation: 1s linear 0s normal none infinite loading;
     -webkit-animation: 1s linear 0s normal none infinite loading;
-    height: 0.47rem;
-    font-size: 0.47rem;
+    height: 2rem;
+    font-size: 2rem;
     text-align: center;
-    line-height: 0.47rem;
-    margin-right: 0.09rem;
+    line-height: 2rem;
+    margin-right: .4rem;
 
 }
 @-webkit-keyframes loading {
@@ -343,19 +343,19 @@
 }
 
 .no-data .img {
-    margin: 0.47rem auto;
-    width: 3.75rem;
-    height: 3.75rem
+    margin: 2rem auto;
+    width: 16rem;
+    height: 16rem
 }
 
 .no-data .img img {
-    width: 3.98rem;
+    width: 17rem;
     height: auto
 }
 
 .no-data .tip {
-    font-size: 0.33rem;
+    font-size: 1.4rem;
     color: #999;
-    line-height: 0.47rem;
-    margin: 0.94rem 0 0.35rem 0
+    line-height: 2rem;
+    margin: 4rem 0 1.5rem 0
 }
