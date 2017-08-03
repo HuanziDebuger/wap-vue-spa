@@ -25,7 +25,7 @@
     "vuex": "2.3.1",
     "gome-dll-bridge": "1.0.0",
     "gome-ui-share-z": "master",
-    "gome-ui-lazyload": "^1.0.7",
+    "gome-ui-lazyload": "1.0.7",
     "gome-utils-storage": "0.0.1",
     "gome-utils-http": "^1.0.10",
     "gome-ui-kit": "1.1.53",
@@ -103,5 +103,5 @@
     "webpack-hot-middleware": "^2.18.0",
     "optimize-css-assets-webpack-plugin": "^3.0.0"
   },
-  "currentVersion": "1.0.38"
+  "currentVersion": "1.0.44"
 }
