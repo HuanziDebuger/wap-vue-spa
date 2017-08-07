@@ -495,6 +495,7 @@
         }
         .content{
             line-height:.4rem;
+            padding-top:.2rem !important;
         }
         .btn-container .btn{
             border-radius: 0 0 .15rem .15rem;
