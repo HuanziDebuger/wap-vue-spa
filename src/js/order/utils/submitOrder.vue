@@ -19,8 +19,20 @@
         
         methods: {
             submitOrder () {
-                 
-                //提交订单
+                /*判断有没有收货地址*/
+                if(this.$store.state.data.successMessage){
+                    new Modal({
+                        data:{
+                            title: '提示',
+                            content: '请填写收货人信息',
+                            hasClose: false,
+                            ok:'确定',
+                            // classname: 'emptyAddressMsgbox'
+                        },
+                    
+                    })
+                }else{
+                    //提交订单
                 http({
                     //url: '//' + location.host + '/order_ajax.html',
                     url: '//' + location.host + '/cart.html',
@@ -89,6 +101,7 @@
                         
                     }
                 })
+                }
                 
             },
         },
