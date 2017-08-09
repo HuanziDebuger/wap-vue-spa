@@ -9,14 +9,14 @@
 		<h3>配送时间</h3>
 		<!--限时达-->
 		<div v-if="g3ppTimeRadioSource[0]" class="xsdCont">
-			<router-link :to="nextPage">
+			<!--<router-link :to="nextPage">-->
 				<p class="subtitle">
 					<span v-if="$store.state.$productList.data.g3ppDeliverTimeOptions[0].code=='XSD'">限时达商品配送时间</span>
 					<span v-if="$store.state.$productList.data.g3ppDeliverTimeOptions[0].code=='JSD'">计时达商品配送时间</span>
 					
 					<span>{{$store.state.$productList.data.g3ppDeliverDesc}}</span>
 				</p>
-			</router-link>
+			<!--</router-link>-->
 			<div class="xsdTime">
 				<div class="choose-time" style="display:flex;" v-for="item in $store.state.$productList.data.g3ppDeliverTimeOptions">
 					{{deliverTime}}

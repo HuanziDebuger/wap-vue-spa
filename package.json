@@ -39,7 +39,8 @@
     "vuex": "2.3.1",
     "webpack-merge": "^4.1.0",
     "zepto": "1.2.0",
-    "gome-mockjs": "1.0.0"
+    "gome-mockjs": "1.0.0",
+    "mockjs": "latest"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
@@ -106,4 +107,8 @@
     "webpack-hot-middleware": "^2.18.0"
   },
   "currentVersion": "1.0.44"
+
 }
+
+
+

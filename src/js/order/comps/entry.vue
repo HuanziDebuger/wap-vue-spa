@@ -150,7 +150,7 @@
                         jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage'],
                     });
                     
-                        var imgUrl = 'http://img.gomein.net.cn/mobile/cms/prom/hybrid/p/cms/src/images/gomelogo.png?v=20170307'
+                        var imgUrl = 'http://gfs5.gomein.net.cn/T1NcbvBshj1RCvBVdK.png'
                     
                     wx.ready(function(){
                         // 分享给朋友
@@ -495,6 +495,7 @@
         }
         .content{
             line-height:.4rem;
+            padding-top:.2rem !important;
         }
         .btn-container .btn{
             border-radius: 0 0 .15rem .15rem;
