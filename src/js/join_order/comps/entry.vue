@@ -8,7 +8,7 @@
     <Page id="app">
         <nav>
             <i><</i>
-            凑单
+            凑单-dev
         </nav>
         <catagory  v-if="$store.state.filterCatList && $store.state.filterCatList.length > 0"></catagory>
         <p v-if="$store.state.filterCatList && $store.state.filterCatList.length > 0" class="desc">{{$store.state.globalState.desc}}</p>
@@ -21,18 +21,22 @@
                 <p class="tip">{{$store.state.globalState.condition}}，总计:<em>{{$store.state.globalState.amount}}</em></p>
                 <p class="sub-tip">{{$store.state.globalState.discount}}</p>
             </div>
-            <Button class="default yellow">反反复复</Button>
+            <Button @click.native="showGiftBox" class="default yellow yellow-F6A623">领取赠品</Button>
             <Button class="default">去购物车</Button>
         </div>
+        <!--此处渲染赠品盒子内容组件-->
+        <giftBox ref="giftBox"></giftBox>
     </Page>
 </template>
 <script>
-import {RadioItem, RadioMixin, Page, Scroller, Button, Gotop} from 'gome-ui-kit'
+import {RadioItem, RadioMixin, Page, Scroller, Button, Gotop, Aside} from 'gome-ui-kit'
 import Product from './entry/product.vue'
 import catagory from './entry/catagory.vue'
 import eventbus from 'gome-utils-eventbus'
+import giftBox from './entry/joinOrder_giftBox.vue'
 export default {
     components: {
+        giftBox,
         Radio: RadioItem,
         Page,
         Scroller,
@@ -60,6 +64,11 @@ export default {
             }
         })
     },
+    methods: {
+        showGiftBox(){
+             this.$refs.giftBox.emitAside()
+        }
+    }
 }
 </script>
 <style>
@@ -137,6 +146,10 @@ export default {
             &.yellow {
                 background-color: yellow;
                 border-color: yellow;
+            }
+            &.yellow-F6A623{
+                background-color:#F6A623;
+                border-color:#F6A623;
             }
         }
     }

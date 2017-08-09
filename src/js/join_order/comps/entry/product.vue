@@ -5,7 +5,8 @@
  * @Last Modified time: 2017-07-30 02:10:15
  */
 <template>
-    <Product 
+    <Product
+        class="main-product" 
         :href="jump(data.goodsNo, data.skuID)"
         :img="data.productImgURL">
         <div slot="content">
@@ -47,7 +48,7 @@ export default {
 @import "~gome-ui-kit/components/less/utils.less";
 @import "~gome-ui-kit/components/less/layout.less";
 
-.product {
+.product.main-product {
     font-size: @font-nm;
     a {
         padding: .2rem 0 0 .1rem;
