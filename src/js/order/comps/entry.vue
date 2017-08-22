@@ -2,7 +2,7 @@
  * @Author: zhudanmei 
  * @Date: 2017-01-18 16:32:47 
  * @Last Modified by: zhudanmei
- * @Last Modified time: 2017-08-21 17:24:55
+ * @Last Modified time: 2017-08-22 15:16:14
 
  */
 <template>
@@ -491,12 +491,11 @@
     .alert .window {
         border-radius: .15rem;
         .title{
-            font-size:.32rem !important;
+            font-size:@font-lg-sm !important;
             
         }
         .content{
             line-height:.4rem;
-            padding-top:.2rem !important;
         }
         .btn-container .btn{
             border-radius: 0 0 .15rem .15rem;
@@ -530,7 +529,7 @@
         transform: translate3d(-100%, 0, 0);
      }
     .order-wrap{
-        margin-bottom: .82rem;
+        padding-bottom: .82rem;
     }
     .link-ico {
         .flexbox();
@@ -555,7 +554,7 @@
 			}
         };
         p{
-            font-size: .3rem;
+            font-size: @font-lg-sm - .02rem;
             .border-top(@input-borcolor);
             .text-right();
             padding-right: .2rem;

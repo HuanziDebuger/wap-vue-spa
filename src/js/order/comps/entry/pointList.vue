@@ -335,10 +335,10 @@
             }
             .beans-icon{
                 display: @inlineBlock;
-                width: .3rem;
-                height: .3rem;
+                .set-width-height(1;.32rem);
+               
                 .background-image-nm(url(../../images/meikouling_wrong.png));
-                vertical-align: bottom;
+                vertical-align: sub;
                 margin-left: .05rem;
             }
         };

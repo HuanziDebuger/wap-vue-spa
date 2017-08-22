@@ -2,7 +2,7 @@
  * @Author: zhudanmei 
  * @Date: 2017-01-07 12:30:26 
  * @Last Modified by: zhudanmei
- * @Last Modified time: 2017-08-22 14:14:59
+ * @Last Modified time: 2017-08-22 15:13:52
  */
 <template>
     <!--发票跳转-->
@@ -503,7 +503,7 @@
                 if(item.isActive){
                     //this.invoiceTitleType = item.code;
                     if(item.code!=='2'){
-                        this.companytaxNumber = '',
+                        this.companytaxNumber = ''
                         
                     }
                    
