@@ -172,7 +172,7 @@
                 
             },
             save () {
-                if(this.info.name && this.info.mobile &&this.info.address){
+                if(this.info.name && this.info.mobile && this.info.address){
                     http({
                         url: '//' + location.host + '/ucenter/addAndUpdataOperate',
                         type: 'post',
@@ -206,6 +206,15 @@
                             new Toast('修改默认地址失败');
                         }
                     })
+                }else{
+                    if(this.info.name==''){
+                        new Toast('请输入收货人姓名');
+                    }else if(this.info.name && this.info.mobile==''){
+                        new Toast('请输入手机号码');
+                    }else if(this.info.name && this.info.mobile && this.info.address==''){
+                        new Toast('请输入收货人地址');
+                    }
+                    
                 }
                 
             }

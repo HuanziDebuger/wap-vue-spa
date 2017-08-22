@@ -2,7 +2,7 @@
  * @Author: zhudanmei 
  * @Date: 2017-01-18 16:32:47 
  * @Last Modified by: zhudanmei
- * @Last Modified time: 2017-07-24 13:47:22
+ * @Last Modified time: 2017-08-21 17:24:55
 
  */
 <template>
@@ -107,10 +107,11 @@
         },
         created () {
             /*TODO 判断页面是否第一次进来，第一次取window.sourceData*/
-            this.updateEntryData();
-            
+            /*this.updateEntryData();*/
+            this.$store.dispatch('updateEntryData')
             eventbus.only('updateEntryData' ,() => {
-                this.updateEntryData();
+                //this.updateEntryData();
+                 this.$store.dispatch('updateEntryData')
             });
 
             /*地理定位获取经纬度*/
@@ -212,7 +213,7 @@
                     /*TODO 验证推荐人*/
                     // if(this.$store.state.ischeckRefereeNo){
                     
-                    if(this.$store.state.recommendMsg){  //判断推荐号
+                    /* if(this.$store.state.recommendMsg){  //判断推荐号
                         http({
                             url: '//' + location.host + '/order_ajax.html',
                             type: 'post',
@@ -239,11 +240,11 @@
                             }
                             
                         })
-                    }else if(this.$store.state.data.isNeedPayPassword=='Y'){   /*是否需要支付密码*/
-                        this.password();
-                    }else{
-                        this.submitOrder();
-                    }
+                    }else */ if(this.$store.state.data.isNeedPayPassword=='Y'){   /*是否需要支付密码*/
+                                this.password();
+                            }else{
+                                this.submitOrder();
+                            }
                     
                    
                     
@@ -491,7 +492,7 @@
         border-radius: .15rem;
         .title{
             font-size:.32rem !important;
-            padding:0;
+            
         }
         .content{
             line-height:.4rem;

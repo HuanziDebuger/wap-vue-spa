@@ -2,7 +2,7 @@
  * @Author: zhaoye 
  * @Date: 2017-01-07 15:39:35 
  * @Last Modified by: zhudanmei
- * @Last Modified time: 2017-03-27 14:39:21
+ * @Last Modified time: 2017-08-22 14:14:19
  */
 <template>
     <div class="list">
@@ -63,8 +63,10 @@
             <li class="recom-num">
                 <h2 >使用推荐号</h2>
                 <div class="cont flex1">
-                    <input  type="text" placeholder="请输入门店营业员编号(选填)" v-model="$store.state.recommendMsg" @input = 'checkRecommend'>
-                    <!--<p v-else>无推荐人可不填</p>v-if="beanSource[1].isActive" -->
+                   
+                    <input type="text" v-model="this.recommendMsg" v-show="this.recommendMsgShow" @focus = 'changeRecommend'>
+                    <input type="text" placeholder="请输入门店营业员编号(选填)" v-model="$store.state.recommendMsg"  @blur="onBlur" v-show="this.recommendMsgShow==false">
+                    
                 </div>
                 <!--<coption :source="beanSource" :index="1" @onClick="onOptionClick" @click.native="ischeckedRecommend()">
                     <span slot="pre">
@@ -105,9 +107,10 @@
                     },
                 ],
                 recommendMsg:'',
+                recommendMsgShow:false,
                 //couponHref: 'order_fill_coupon.html' + window.location.search.match(//) ? s : '' +'?source='+ (query.parse(location.search).source || 1),
                 //couponHref: 'order_fill_coupon.html' + window.location.search ,
-                 couponHref: 'order_fill_coupon.html' + (window.location.search ? window.location.search : '?source=1'),
+                couponHref: 'order_fill_coupon.html' + (window.location.search ? window.location.search : '?source=1'),
                 cardHref: 'order_fill/card' + (window.location.search ? window.location.search : '?source=1'),
             }
         },
@@ -151,8 +154,43 @@
                     }
                 })
             },
-            checkRecommend(){
-                
+            changeRecommend(){
+                this.recommendMsgShow = false;
+            },
+            onBlur: function(){
+               
+                if(this.$store.state.recommendMsg){  //判断推荐号
+                    http({
+                        url: '//' + location.host + '/order_ajax.html',
+                        type: 'post',
+                        data: {
+                            act: 'checkRefereeNo',
+                            json: JSON.stringify({
+                                businessType: query.parse(window.location.search).source || '1',
+                                refereeNo:this.$store.state.recommendMsg
+                            })
+                            
+                        }
+                    })
+                    .then(islogin)
+                    .then(data => {
+                        if(data.isSuccess != 'Y'){
+                            new Toast(data.failReason);
+                            return false;
+                        }else{
+                            this.recommendMsgShow = true;
+                            
+                            this.recommendMsg = data.refereeInfo;
+                            
+                            /* if(this.$store.state.data.isNeedPayPassword=='Y'){
+                                this.password();
+                            }else{
+                                this.submitOrder();  
+                            } */
+                        }
+                        
+                    })
+                }
             },
             useBeans(){
                 //使用美豆
@@ -173,19 +211,7 @@
                     eventbus.emit('updateEntryData');
                     
                 })
-               /* var timestamp = Date.parse(new Date());
-                http({
-                    url: '//' + location.host + '/index.php?ctl=order_fill&act=applyGomePoint&dotime='+timestamp,
-                   type:'post',
-                   data: {
-                       businessType: query.parse(window.location.search).source || '1',
-                      operationType : this.operationType //选中未选中
-                    },
-                })
-                .then(function(data){
-                    
-                    eventbus.emit('updateEntryData')
-                })*/
+               
             },
             useBalance(){
                 //使用余额

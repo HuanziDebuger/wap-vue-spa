@@ -2,7 +2,7 @@
  * @Author: zhaoye 
  * @Date: 2017-01-16 17:20:24 
  * @Last Modified by: zhudanmei
- * @Last Modified time: 2017-04-21 16:23:37
+ * @Last Modified time: 2017-08-22 14:14:49
 
  */
 import Vue from 'vue';
@@ -100,7 +100,7 @@ export default {
             state.currentArea[3].code = area[3].code
         },
         updateAddressSelector (state, newData) {
-            console.log()
+            
             //state.data = newData;
             if(!state.data)state.data = {}
             for(var key in newData.data){
