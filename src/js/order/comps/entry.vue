@@ -2,7 +2,7 @@
  * @Author: zhudanmei 
  * @Date: 2017-01-18 16:32:47 
  * @Last Modified by: zhudanmei
- * @Last Modified time: 2017-08-22 15:16:14
+ * @Last Modified time: 2017-08-24 14:59:23
 
  */
 <template>
@@ -213,7 +213,7 @@
                     /*TODO 验证推荐人*/
                     // if(this.$store.state.ischeckRefereeNo){
                     
-                    /* if(this.$store.state.recommendMsg){  //判断推荐号
+                    if(this.$store.state.recommendMsg){  //判断推荐号
                         http({
                             url: '//' + location.host + '/order_ajax.html',
                             type: 'post',
@@ -229,7 +229,7 @@
                         .then(islogin)
                         .then(data => {
                             if(data.isSuccess != 'Y'){
-                                new Toast(data.failReason);
+                                // new Toast(data.failReason);
                                 return false;
                             }else{
                                 if(this.$store.state.data.isNeedPayPassword=='Y'){
@@ -240,7 +240,7 @@
                             }
                             
                         })
-                    }else */ if(this.$store.state.data.isNeedPayPassword=='Y'){   /*是否需要支付密码*/
+                    }else if(this.$store.state.data.isNeedPayPassword=='Y'){   /*是否需要支付密码*/
                                 this.password();
                             }else{
                                 this.submitOrder();

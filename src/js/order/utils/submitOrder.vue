@@ -2,7 +2,7 @@
  * @Author: zhudanmei 
  * @Date: 2017-02-23 19:54:23 
  * @Last Modified by: zhudanmei
- * @Last Modified time: 2017-08-20 20:31:44
+ * @Last Modified time: 2017-08-24 14:59:50
  */
 <script>
 //vue
@@ -19,6 +19,7 @@
         
         methods: {
             submitOrder () {
+                console.log('推荐号',this.$store.state.recommendMsg);
                 /*判断有没有收货地址*/
                 if(this.$store.state.data.successMessage){
                     new Modal({
@@ -60,7 +61,7 @@
                             
                         } 
                         window.location.href = "//"+ location.host.replace('cart.','') +"/cashier.html?order_id=" + data.orderId+'&order_source=1&tm='+data.order_pay_val;
-                        //window.location.href = "http://m.uatplus.com/cashier.html?order_id=" + data.orderId+'&order_source=1&tm='+data.order_pay_val;
+                        
                     }else if(data.isSuccess=='N'){
                         if(data.outOfType == "0"){ //主商品缺货
                             //缺货商品集合

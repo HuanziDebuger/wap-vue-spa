@@ -2,7 +2,7 @@
  * @Author: zhaoye 
  * @Date: 2017-01-07 15:39:35 
  * @Last Modified by: zhudanmei
- * @Last Modified time: 2017-08-22 14:14:19
+ * @Last Modified time: 2017-08-24 14:52:21
  */
 <template>
     <div class="list">
@@ -158,7 +158,7 @@
                 this.recommendMsgShow = false;
             },
             onBlur: function(){
-               
+                
                 if(this.$store.state.recommendMsg){  //判断推荐号
                     http({
                         url: '//' + location.host + '/order_ajax.html',
@@ -176,10 +176,11 @@
                     .then(data => {
                         if(data.isSuccess != 'Y'){
                             new Toast(data.failReason);
+                            this.$store.state.recommendMsg = '';
+                            console.log('fffffff',this.$store.state.recommendMsg);
                             return false;
                         }else{
                             this.recommendMsgShow = true;
-                            
                             this.recommendMsg = data.refereeInfo;
                             
                             /* if(this.$store.state.data.isNeedPayPassword=='Y'){
