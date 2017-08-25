@@ -2,7 +2,7 @@
  * @Author: zhudanmei 
  * @Date: 2017-01-18 16:32:47 
  * @Last Modified by: zhudanmei
- * @Last Modified time: 2017-07-24 13:47:22
+ * @Last Modified time: 2017-08-24 14:59:23
 
  */
 <template>
@@ -107,10 +107,11 @@
         },
         created () {
             /*TODO 判断页面是否第一次进来，第一次取window.sourceData*/
-            this.updateEntryData();
-            
+            /*this.updateEntryData();*/
+            this.$store.dispatch('updateEntryData')
             eventbus.only('updateEntryData' ,() => {
-                this.updateEntryData();
+                //this.updateEntryData();
+                 this.$store.dispatch('updateEntryData')
             });
 
             /*地理定位获取经纬度*/
@@ -228,7 +229,7 @@
                         .then(islogin)
                         .then(data => {
                             if(data.isSuccess != 'Y'){
-                                new Toast(data.failReason);
+                                // new Toast(data.failReason);
                                 return false;
                             }else{
                                 if(this.$store.state.data.isNeedPayPassword=='Y'){
@@ -240,10 +241,10 @@
                             
                         })
                     }else if(this.$store.state.data.isNeedPayPassword=='Y'){   /*是否需要支付密码*/
-                        this.password();
-                    }else{
-                        this.submitOrder();
-                    }
+                                this.password();
+                            }else{
+                                this.submitOrder();
+                            }
                     
                    
                     
@@ -490,12 +491,11 @@
     .alert .window {
         border-radius: .15rem;
         .title{
-            font-size:.32rem !important;
-            padding:0;
+            font-size:@font-lg-sm !important;
+            
         }
         .content{
             line-height:.4rem;
-            padding-top:.2rem !important;
         }
         .btn-container .btn{
             border-radius: 0 0 .15rem .15rem;
@@ -529,7 +529,7 @@
         transform: translate3d(-100%, 0, 0);
      }
     .order-wrap{
-        margin-bottom: .82rem;
+        padding-bottom: .82rem;
     }
     .link-ico {
         .flexbox();
@@ -554,7 +554,7 @@
 			}
         };
         p{
-            font-size: .3rem;
+            font-size: @font-lg-sm - .02rem;
             .border-top(@input-borcolor);
             .text-right();
             padding-right: .2rem;

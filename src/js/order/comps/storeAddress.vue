@@ -316,7 +316,7 @@
     
     .title{
         display: inline-block;
-        width:1.3rem;
+        width:1.38rem;
     }
     border-bottom: .02rem #e6e6e6 solid;
     font-size: @font-dark;
