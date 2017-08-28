@@ -1,28 +1,32 @@
 /*
  * @Author: zhaoye 
  * @Date: 2017-07-29 14:50:15 
- * @Last Modified by: zhaoye
- * @Last Modified time: 2017-07-30 01:43:21
+ * @Last Modified by: liuhuan
+ * @Last Modified time: 2017-08-26 14:15:48
  */
 <template>
     <Page id="app">
-        <nav>
-            <i><</i>
-            凑单-dev
+        <nav >
+            <i @click="goback"></i>
+            凑单
         </nav>
-        <catagory  v-if="$store.state.filterCatList && $store.state.filterCatList.length > 0"></catagory>
+        <catagory></catagory>
         <p v-if="$store.state.filterCatList && $store.state.filterCatList.length > 0" class="desc">{{$store.state.globalState.desc}}</p>
         <div class="product-list-container">
             <Product v-for="item in $store.state.goodsList" :data="item"></Product>
-            <div class="loading" >加载中...</div>
+            <div class="loading" v-if="$store.state.goodsList.length > 5" >加载中...</div>
         </div>
         <div class="bottom-nav">
             <div class="bottom-nav-content">
-                <p class="tip">{{$store.state.globalState.condition}}，总计:<em>{{$store.state.globalState.amount}}</em></p>
+                <p class="tip">小计:<em>{{$store.state.globalState.amount}}</em></p>
                 <p class="sub-tip">{{$store.state.globalState.discount}}</p>
             </div>
-            <Button @click.native="showGiftBox" class="default yellow yellow-F6A623">领取赠品</Button>
-            <Button class="default">去购物车</Button>
+            <Button
+            v-if="$store.state.globalState.showGiftGetButton=='Y'"
+            :giftGetButtoncode="$store.state.globalState.giftGetButtoncode"
+            @click.native="showGiftBox" 
+            class="default yellow">{{$store.state.globalState.giftGetButtonDesc}}</Button>
+            <Button class="default" @click.native="gocart">去购物车</Button>
         </div>
         <!--此处渲染赠品盒子内容组件-->
         <giftBox ref="giftBox"></giftBox>
@@ -52,7 +56,7 @@ export default {
     created () {
         this.$store.dispatch('getProductList')
         new Gotop()
-        window.addEventListener('scroll', e => {
+        document.addEventListener('scroll', e => {
             const rect = document.body.getBoundingClientRect()
             if(Math.abs((rect.height - window.scrollY) - document.documentElement.offsetHeight) < 150
                 && !this.isLoadingGoods){
@@ -65,8 +69,14 @@ export default {
         })
     },
     methods: {
+        goback(){
+            window.history.back()
+        },
         showGiftBox(){
              this.$refs.giftBox.emitAside()
+        },
+        gocart(){
+            window.location.href=`//${location.host}/shopping_cart.html`
         }
     }
 }
@@ -92,6 +102,8 @@ export default {
         background: none;
     }
     nav {
+        font-size:@font-lg;
+        color:@gray-dark;
         text-align: center;
         line-height: .88rem;
         background: @white;
@@ -99,8 +111,11 @@ export default {
         .border();
         i {
             position: absolute;
-            left: 0;
-            width: .2rem;
+            left:.37rem;
+            top:.25rem;
+            width:.21rem;
+            height:.43rem;
+            .background-image-nm(url(../images/pre_arrow.png));
         }
     }
     .desc {
@@ -127,29 +142,27 @@ export default {
             padding-left: .1rem;
             .tip {
                 color: @font-color-dark;
-                font-size: @font-lg-sm - .04rem;
+                font-size: @font-lg-sm - .02rem;
                 margin-bottom: .06rem;
+                line-height:.3rem;
                 em {
                     color: @red;
                 }
             }
             .sub-tip {
                 color: @font-color;
-                font-size: @font-sm + .02rem;
+                font-size: @font-sm;
+                line-height:.3rem;
             }
         }
         .btn {
             line-height: @bottom-nav-height;
             border: none;
-            font-size: @font-lg;
+            font-size: @font-nm + .02rem;
             border-radius: 0;
-            &.yellow {
-                background-color: yellow;
-                border-color: yellow;
-            }
-            &.yellow-F6A623{
-                background-color:#F6A623;
-                border-color:#F6A623;
+            &.yellow{
+                background-color:#f6a623;
+                border-color:#f6a623;
             }
         }
     }

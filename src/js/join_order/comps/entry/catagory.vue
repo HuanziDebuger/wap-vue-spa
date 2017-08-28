@@ -1,23 +1,23 @@
 /*
  * @Author: zhaoye 
  * @Date: 2017-07-29 18:15:51 
- * @Last Modified by: zhaoye
- * @Last Modified time: 2017-07-30 02:25:52
+ * @Last Modified by: liuhuan
+ * @Last Modified time: 2017-08-21 16:37:20
  */
 <template>
-<div  @touchmove.prevent="function(){}">
+<div  @touchmove.prevent="function(){}" v-if="$store.state.filterCatList && $store.state.filterCatList.length > 0">
     <div class="tab-nav" :class="{catagoring: isCatagoryShow}">
         <div class="radio-container">
             <Radio @click.native="catagorySwitch(0)" :source="radioSource" :index="0" @onClick="onRadioClick" class="item">
                 <i slot="post">
-                    <span v-if="isCatagoryShow">u</span>
-                    <span v-else>d</span>
+                    <span v-if="isCatagoryShow" class="up_arrow">上</span>
+                    <span v-else class="gray-arrow" :class="{down_arrow:radioSource[0].isActive}">下</span>
                 </i>
             </Radio>
             <Radio @click.native="priceSwitch(1)" :source="radioSource" :index="1" @onClick="onRadioClick" class="item">
                 <i slot="post">
-                    <span v-if="priceHighFirst">高</span>
-                    <span v-else-if="priceLowFirst">低</span>
+                    <span v-if="priceHighFirst" class="up_arrow">高</span>
+                    <span v-else-if="priceLowFirst" class="down_arrow">低</span>
                     <span v-else>无</span>
                 </i>
             </Radio>
@@ -42,6 +42,15 @@
         </div>
     </div>
     <div class="blocker" v-show="isCatagoryShow"></div>
+</div>
+<!--商品列表接口异常时，默认展示tab导航-->
+<div v-else class="tab-nav">
+    <div class="radio-container">
+        <span class="item">全部分类</span>
+        <span class="item">价格</span>
+        <span class="item">销量</span>
+        <span class="item">评价</span>
+    </div>
 </div>
 </template>
 <script>
@@ -83,6 +92,19 @@ export default {
             subCataRadioSource: [],
         }
     },
+    computed:{
+        // priceCont(){
+        //     if(!this.priceHighFirst && !this.priceLowFirst){
+        //         return '无'
+        //     }else if(!this.priceHighFirst){
+        //         return '低'
+        //     }else{
+        //         return '高'
+        //     }
+
+        // }
+        
+    },
     created () {
         this.catagoryRadioSource.push({
             isActive: true,
@@ -116,6 +138,9 @@ export default {
         catagorySwitch (id) {
             this.lastPriority = id
             this.isCatagoryShow = this.isCatagoryShow ? false : true
+            //重置价格状态
+            this.priceHighFirst=false
+            this.priceLowFirst = false
         },
         catagoryHide () {
             this.isCatagoryShow = false
@@ -123,7 +148,7 @@ export default {
         async priceSwitch (id) {
             this.lastPriority = id
             this.catagoryHide()
-            let sort
+            let sort           
             if(!this.priceHighFirst && !this.priceLowFirst){
                 this.priceHighFirst = true
                 this.priceLowFirst = false
@@ -147,6 +172,9 @@ export default {
         async saleFirst (id) {
             if(this.lastPriority == id)return
             this.lastPriority = id
+            //重置价格状态
+            this.priceHighFirst=false
+            this.priceLowFirst = false
             this.catagoryHide()
             await this.$store.dispatch('getProductList', {
                 reset: true,
@@ -156,6 +184,9 @@ export default {
         async commentFirst (id) {
             if(this.lastPriority == id)return
             this.lastPriority = id
+            //重置价格状态
+            this.priceHighFirst=false
+            this.priceLowFirst = false
             this.catagoryHide()
             await this.$store.dispatch('getProductList', {
                 reset: true,
@@ -213,6 +244,32 @@ export default {
             &.active {
                 color: @red;
                 border-bottom: .04rem solid @red;
+            }
+            .radio-content{
+
+            }
+            i{
+                position:relative;
+                span{
+                    width:.15rem;
+                    height:.08rem;
+                    border-left:.1rem solid transparent;
+                    border-right:.1rem solid transparent;                    
+                    position:absolute;
+                    top:.15rem;
+                    left:.15rem;
+                    text-indent:-8888rem;
+                    &.gray-arrow{
+                      border-top:.1rem solid @gray-light;  
+                    }
+                    &.up_arrow{
+                        border-bottom:.1rem solid @red; 
+                    }
+                    &.down_arrow{                    
+                        border-top:.1rem solid @red;
+                    }
+                }
+                
             }
         }
     }

@@ -1,4 +1,20 @@
-<script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<link rel="dns-prefetch" href="//css.gomein.net.cn">
+<link rel="dns-prefetch" href="//js.gomein.net.cn">
+<link rel="dns-prefetch" href="//img.gomein.net.cn">
+<meta name="applicable-device" content="mobile">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Pragma" content="no-cache">
+<meta name="wap-font-scale" content="no">
+        <script>
     ! function(e, t) {
         function i() {
             var t = n.getBoundingClientRect().width;
@@ -61,3 +77,62 @@
         }
     }(window, window.lib || (window.lib = {}))
 </script>
+            <script>
+    var dpr = document.documentElement.getAttribute('data-dpr') || 1
+    var width = document.documentElement.offsetWidth
+    var fontSize = 100/750 * width;
+    document.querySelector('html').style.fontSize = (fontSize)+'px';
+    window.addEventListener('resize',function(){
+        var width = document.querySelector('html').offsetWidth;
+        var fontSize = 100/750 * width;
+        document.querySelector('html').style.fontSize = (fontSize)+'px';
+    })
+</script> 
+                <title>凑单</title>
+                <link rel="stylesheet" href="http://localhost:3000/style/node_modules/gome-dll-ui-kit/dist/v1/uiKit.css">
+                <style>
+                    .loading-container {
+                        z-index: 999999;
+                    }
+                </style>
+</head>
+
+<body>
+    <div id="pre-loading" class="loading-container">
+        <div class="loading-wrapper">
+            <div class="loading loading_play"></div>
+            <p class="loading-tip">使劲加载中…</p>
+        </div>
+    </div>
+    <div id="app"></div>
+    <script type="text/javascript">
+        var act_id = "";
+        var sourse = "1";
+        var app_cdn = "//app.gomein.net.cn/plus/images";
+        var crossShop = "0";
+        var isNpop = "N";
+        var isKdpPromotion = "N";
+        var promId = "1000529180-1000529181-1000529183";
+        var isGetGifts = "Y";
+        var shopNo = "A00G";
+    </script>
+
+    <!-- <script src="http://localhost:3000/js/node_modules/mockjs/dist/mock.js"></script>
+    <script src="http://localhost:3000/js/mock/join_order/join_order.js"></script> -->
+
+    <!--@start-->
+    <!--@compile:js-->
+    <!--@path:{JS_CDN_IP}-->
+    <script src="http://localhost:3000/js/node_modules/gome-vue-vendor/dist/2.3.4/vendor.full.js"></script>
+    <script src="http://localhost:3000/js/node_modules/gome-dll-utils/dist/v1/utils.js"></script>
+    <script src="http://localhost:3000/js/node_modules/gome-dll-ui-kit/dist/v1/uiKit.js"></script>
+    <script src="http://localhost:3000/js/node_modules/gome-dll-bridge/dist/v1/bridge.js"></script>
+    <!--@start-->
+    <!--@compile:js-->
+    <!--@file:{JS_CDN_IP}/shop_cart/index.js-->
+    <script src="http://localhost:3000/js/join_order/index.js"></script>
+    <!--@end-->
+    <!--@end-->
+</body>
+
+</html>

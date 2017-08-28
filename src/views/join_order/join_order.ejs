@@ -6,7 +6,7 @@
         <% include ../public/meta.ejs %>
             <% include ../public/font.ejs %>
                 <title>凑单</title>
-                <link rel="stylesheet" href="http://localhost:3000/node_modules/gome-dll-ui-kit/dist/v1/uiKit.css">
+                <link rel="stylesheet" href="http://localhost:3000/style/node_modules/gome-dll-ui-kit/dist/v1/uiKit.css">
                 <style>
                     .loading-container {
                         z-index: 999999;
@@ -22,7 +22,6 @@
         </div>
     </div>
     <div id="app"></div>
-
     <script type="text/javascript">
         var act_id = "";
         var sourse = "1";
@@ -30,12 +29,17 @@
         var crossShop = "0";
         var isNpop = "N";
         var isKdpPromotion = "N";
-        var promId = "P3529329";
+        var promId = "1000529180-1000529181-1000529183";
+        var isGetGifts = "Y";
+        var shopNo = "A00G";
     </script>
+
+    <!-- <script src="http://localhost:3000/js/node_modules/mockjs/dist/mock.js"></script>
+    <script src="http://localhost:3000/js/mock/join_order/join_order.js"></script> -->
 
     <!--@start-->
     <!--@compile:js-->
-    <!--@path:{JS_CDN_IP}/node_modules/-->
+    <!--@path:{JS_CDN_IP}-->
     <script src="http://localhost:3000/js/node_modules/gome-vue-vendor/dist/2.3.4/vendor.full.js"></script>
     <script src="http://localhost:3000/js/node_modules/gome-dll-utils/dist/v1/utils.js"></script>
     <script src="http://localhost:3000/js/node_modules/gome-dll-ui-kit/dist/v1/uiKit.js"></script>

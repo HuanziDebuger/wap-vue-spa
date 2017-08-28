@@ -1,8 +1,8 @@
 /*
  * @Author: zhaoye 
  * @Date: 2017-07-29 20:44:12 
- * @Last Modified by: zhaoye
- * @Last Modified time: 2017-07-30 02:10:15
+ * @Last Modified by: liuhuan
+ * @Last Modified time: 2017-08-26 18:37:53
  */
 <template>
     <Product
@@ -13,7 +13,7 @@
             <p class="title"><span class="tag">自营</span>{{data.goodsName}}</p>
             <p class="price"><em>&yen;{{data.lowestSalePrice}}</em></p>
             <p class="comment"><small>{{data.evaluatecount}}人评论</small></p>
-            <i @click="buy($event)" class="btn-buy">B</i>
+            <i @click="buy($event)" class="btn-buy"><span></span></i>
         </div>
     </Product>
 </template>
@@ -64,7 +64,7 @@ export default {
             &.content {
                 .flexitem(1);
                 position: relative;
-                border-bottom: .02rem solid @gray-border;
+                border-bottom: .03rem solid @gray-border;
                 color: @font-color-dark;
                 .title {
                     margin-bottom: .2rem;
@@ -105,16 +105,30 @@ export default {
                     bottom: .2rem;
                     width: .7rem;
                     height: .7rem;
-                    border: .02rem solid @gray-border;
+                    border: .03rem solid @gray-border;
                     border-radius: 100%;
                     text-align: center;
+                    span{
+                        display:inline-block;
+                        margin-top:.18rem;
+                        width:.38rem;
+                        height:.35rem;
+                        .background-image-nm(url(../../images/shop_cart_icon.png));
+                    }
+                    
+                    
+                    
                 }
             }
         }
     }
     &:last-child {
         margin-bottom: .88rem;
+        .container.content{
+            border:none;
+        }
     }
 }
+
 </style>
 

@@ -10,13 +10,14 @@
     "fastclick": "^1.0.6",
     "gome-bridge": "^1.0.44",
     "gome-dll-bridge": "1.0.0",
-    "gome-dll-ui-kit": "1.0.7",
-    "gome-dll-utils": "1.0.7",
+    "gome-dll-ui-kit": "1.0.18",
+    "gome-dll-utils": "1.0.8",
+    "gome-mockjs": "1.0.0",
     "gome-polyfill-promise": "^1.0.1",
     "gome-ui-alert-z": "master",
     "gome-ui-downapp-z": "master",
     "gome-ui-gotop-z": "master",
-    "gome-ui-kit": "1.1.55",
+    "gome-ui-kit": "^1.1.65",
     "gome-ui-lazyload": "1.0.7",
     "gome-ui-modal-z": "master",
     "gome-ui-share-z": "master",
@@ -38,9 +39,7 @@
     "vue-router": "2.7.0",
     "vuex": "2.3.1",
     "webpack-merge": "^4.1.0",
-    "zepto": "1.2.0",
-    "gome-mockjs": "1.0.0",
-    "mockjs": "latest"
+    "zepto": "1.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
@@ -107,8 +106,4 @@
     "webpack-hot-middleware": "^2.18.0"
   },
   "currentVersion": "1.0.44"
-
 }
-
-
-
