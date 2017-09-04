@@ -2,7 +2,7 @@
  * @Author: zhaoye 
  * @Date: 2017-07-29 17:04:48 
  * @Last Modified by: liuhuan
- * @Last Modified time: 2017-08-28 14:31:26
+ * @Last Modified time: 2017-09-04 11:39:19
  */
 import Vue from 'vue'
 import Vuex from 'vuex'
@@ -63,7 +63,8 @@ export default new Vuex.Store({
                         promId: window.promId,
                         isGetGifts: window.isGetGifts,
                         goodsList: options,
-                        shopNo:window.shopNo
+                        shopNo:window.shopNo||null,
+                        relCommIds:window.relCommIds||null
                     }
                 })
                 if (result.isSuccess == 'N') {
@@ -86,7 +87,9 @@ export default new Vuex.Store({
                         isNpop: window.isNpop,
                         promId: window.promId,
                         isGetGifts: window.isGetGifts,
-                        shopNo:window.shopNo
+                        shopNo:window.shopNo||null,
+                        relCommIds:window.relCommIds||null
+                        
                     },
                 })
                 if (result.isSuccess == 'N') {
@@ -155,7 +158,8 @@ export default new Vuex.Store({
                             skuId: skuID,
                             number: 1
                         }],
-                        shopNo:window.shopNo
+                        shopNo:window.shopNo||null,
+                        relCommIds:window.relCommIds||null
                     },
                     isNeedLoading: 'Y',
                 })

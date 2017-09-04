@@ -2,13 +2,12 @@
  * @Author: liuhuan 
  * @Date: 2017-08-04 15:07:10
  * @Last Modified by: liuhuan
- * @Last Modified time: 2017-08-26 14:15:34
+ * @Last Modified time: 2017-08-29 17:11:43
  */
 
 <template>
-    <Aside ref="asilder" :direction="'bottom'" :position="60">
+    <Aside ref="asilder" :direction="'bottom'" :position="60" :bgIsClick="isShopNo">
         <giftProduct
-        v-if="$store.state.globalState.giftGroupInfoList && $store.state.globalState.giftGroupInfoList.length>0"
         @closedAside="toClosedAside">
         </giftProduct>
     </Aside>
@@ -24,6 +23,7 @@ export default {
     data(){
         return {
             isConfirm:false,
+            isShopNo:window.shopNo ? true : false,
         }
     },
     mounted(){

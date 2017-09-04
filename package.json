@@ -10,7 +10,7 @@
     "fastclick": "^1.0.6",
     "gome-bridge": "^1.0.44",
     "gome-dll-bridge": "1.0.0",
-    "gome-dll-ui-kit": "1.0.18",
+    "gome-dll-ui-kit": "1.0.20",
     "gome-dll-utils": "1.0.8",
     "gome-mockjs": "1.0.0",
     "gome-polyfill-promise": "^1.0.1",

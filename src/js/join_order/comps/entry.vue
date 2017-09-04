@@ -2,7 +2,7 @@
  * @Author: zhaoye 
  * @Date: 2017-07-29 14:50:15 
  * @Last Modified by: liuhuan
- * @Last Modified time: 2017-08-26 14:15:48
+ * @Last Modified time: 2017-09-01 21:07:01
  */
 <template>
     <Page id="app">
@@ -18,7 +18,7 @@
         </div>
         <div class="bottom-nav">
             <div class="bottom-nav-content">
-                <p class="tip">小计:<em>{{$store.state.globalState.amount}}</em></p>
+                <p class="tip">{{$store.state.globalState.condition}}，小计:<em>{{$store.state.globalState.amount}}</em></p>
                 <p class="sub-tip">{{$store.state.globalState.discount}}</p>
             </div>
             <Button
@@ -120,7 +120,7 @@ export default {
     }
     .desc {
         color: @font-color;
-        font-size: @font-nm;
+        font-size:@font-nm-sm;
         .set-line-height(1;@font-nm * 2;);
         padding-left: .2rem;
     }
@@ -142,7 +142,7 @@ export default {
             padding-left: .1rem;
             .tip {
                 color: @font-color-dark;
-                font-size: @font-lg-sm - .02rem;
+                font-size: @font-nm;
                 margin-bottom: .06rem;
                 line-height:.3rem;
                 em {

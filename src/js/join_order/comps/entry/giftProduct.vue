@@ -11,8 +11,10 @@
         <div class="top-title">{{$store.state.globalState.promTitle}}</div>
         <div class="close-giftbox" @click="askClosed"></div>
     </div>
-     <scroller class="gift-scroller" :direction="'vertical'" :class="{'resetScoller':resetScoller}">  
-    <div class="giftBox-center">
+     <scroller class="gift-scroller" :direction="'vertical'">  
+    <div 
+    v-if="$store.state.globalState.giftGroupInfoList && $store.state.globalState.giftGroupInfoList.length>0"
+    class="giftBox-center">
         <div
         v-for="(item,index) in $store.state.globalState.giftGroupInfoList"
         class="product-cont">
@@ -33,11 +35,16 @@
                         :stateCode="goodsItem.stateCode">
                         {{goodsItem.stateDesc}}
                         </div>
-                        <div slot="content">
-                            <p class="pro-name">{{goodsItem.skuName}}</p>
+                        <div slot="content" class="proInfo">
+                            <p class="pro-name" 
+                            :class="goodsItem.stateCode =='0'?'toGray':''">
+                                {{goodsItem.skuName}}
+                            </p>
                             <p class="price-total">
                                 <em>&yen;{{goodsItem.price}}</em>
-                                <span class="total">x{{goodsItem.num}}</span>
+                                <span class="total" :class="goodsItem.stateCode =='0'?'toGray':''">
+                                    ×{{goodsItem.num}}
+                                </span>
                             </p>
                         </div>
                     </Product>
@@ -46,7 +53,8 @@
            
         </div>
     </div>
-     </scroller> 
+    <div v-else :style="{'text-align':'center','margin-top':'30%'}">暂无赠品信息，请稍后再试！</div>
+     </scroller>
     <div class="giftBox-bottom gray-color"
     :class="{'red-color':isConfirm}" 
     @click="toConfirm">确定</div>
@@ -69,7 +77,7 @@ export default {
             checkedGoods:[],
         }
     },
-    created(){         
+    created(){
         //判断radio是否可选
         this.$store.state.globalState.giftGroupInfoList.forEach(item =>{
             if(item.canSelect=='Y'){ //判断是否可选
@@ -94,32 +102,33 @@ export default {
                 });
             }
         })
+         
        
     },
     methods:{
         //关闭按钮，触发父组件方法
         askClosed(){
-            this.$emit('closedAside','true');
-            //关闭按钮后初始化
-            this.radioSource.forEach((obj)=>{
-                obj.isActive = false;
-            });
-            //确定按钮置灰
-            this.isConfirm = false;
-            //滚动位置清零
+            //判断是不是门店领赠品
+            if(window.shopNo){
+                window.location.href=`//${location.host}/shopping_cart.html`;
+            }else{
+                this.$emit('closedAside','true');
+                //关闭按钮后初始化
+                this.radioSource.forEach((obj)=>{
+                    obj.isActive = false;
+                });
+                //确定按钮置灰
+                this.isConfirm = false;
+            }
             
-        },     
-       //商品跳转链接
-        // jump (productId, skuId) {
-        //     return `${host.item}/product-${productId}-${skuId}.html`
-        // },
-
+            
+        },
         //radio 触发
         sendCheckResult(msg,groupNo){
             if(msg =='checked'){ //判断是否可选状态
                 //激活确定按钮
                 this.isConfirm = true;
-                //获取选中的商品信息
+                //获取点击选中的商品信息
                 this.checkedGoods=[];
                 this.$store.state.globalState.giftGroupInfoList.forEach((groupList)=>{
                     if(groupNo == groupList.groupNo){
@@ -142,14 +151,31 @@ export default {
         //确定触发
         async toConfirm(){
             if(this.isConfirm){
-                try{                    
+                //获取接口默认选中的商品数据
+                if(this.checkedGoods.length == 0){
+                    this.$store.state.globalState.giftGroupInfoList.forEach((groupList)=>{
+                        if(groupList.isSelected=='Y'){
+                            groupList.goodsList.forEach((goods)=>{
+                                this.checkedGoods.push({
+                                    productId:goods.productId,
+                                    skuId:goods.skuId,
+                                    number:goods.num,
+                                    groupNo:groupList.groupNo,
+                                    type:this.$store.state.globalState.type,
+                                    mainItemId:this.$store.state.globalState.mainItemId||null
+                                })
+                            })
+                        }
+                    })
+                }  
+                try{    
                     //提交领取赠品确定请求
                     await this.$store.dispatch('sendGiftGoods',this.checkedGoods)
                     new Toast('赠品已加入购物车');
                     //调用下初始化-关闭浮层
-                    setTimeout(()=>{this.askClosed();},500);
+                    setTimeout(()=>{this.askClosed();},500);                   
                 }catch(e){                  
-                    new Toast('领取失败');
+                    new Toast('赠品领取失败，稍后再试');
                 }
                 
             }
@@ -179,8 +205,8 @@ export default {
             line-height:.9rem;
         }
         .close-giftbox{
-            width:0.34rem;
-            height:0.34rem;
+            width:0.22rem;
+            height:0.22rem;
             .background-image-nm(url(../../images/closeBtn.png));
             position:absolute;
             top:.27rem;
@@ -191,7 +217,7 @@ export default {
     .giftBox-center{
         .flexbox();
         .flexbox.vertical();
-        padding:0 .24rem 0 .38rem;
+        padding:0 .24rem 0 .28rem;
         overflow:hidden;
         .product-cont{    
             .flexbox();
@@ -199,11 +225,11 @@ export default {
             .radio{
                 width:.4rem;
                 height:.4rem;        
-                margin-right:0.4rem;
+                margin-right:0.2rem;
                 margin-top:0.4rem;
                 &.radio-yes{
                     background-color:#fff;
-                    border:.03rem solid @gray-border;
+                    border:1px solid @gray-border;
                     border-radius:100%;
                     //.background-image-nm(url(../../images/radio_uncheck.png));
                 }
@@ -212,6 +238,8 @@ export default {
                 }
                 &.active{
                     .background-image-nm(url(../../images/radio_checked.png));
+                    border:none;
+                    border-radius:0;
                 }
             }
             
@@ -232,9 +260,8 @@ export default {
                                     width: 1.2rem;
                                     height: 1.2rem;
                                     margin-right: 0.15rem;
-                                    border:.03rem solid #ddd;
+                                    border:1px solid #ddd;
                                     background-color: @white;
-                                    padding:.02rem;
                                 }
                                 .mask{
                                     width:.88rem;
@@ -258,6 +285,9 @@ export default {
                                         margin-bottom: .2rem;
                                         line-height: 1.3;
                                         .set-ellipsis-line(2); 
+                                        &.toGray{
+                                            color:#b3b3b3;
+                                        }
                                     }
                                     .price-total{
                                         .flexbox();
@@ -271,6 +301,9 @@ export default {
                                             .flexitem(1);
                                             color: @font-color-dark;
                                             text-align:right;
+                                            &.toGray{
+                                                color:#b3b3b3;
+                                            }
                                             
                                         }
                                     }
@@ -300,5 +333,13 @@ export default {
     }
 }
 .gift-scroller{flex:1}
+.proInfo{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+
+}
+
 </style>
 
