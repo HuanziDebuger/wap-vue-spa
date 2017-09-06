@@ -2,7 +2,7 @@
  * @Author: zhaoye 
  * @Date: 2017-07-29 18:15:51 
  * @Last Modified by: liuhuan
- * @Last Modified time: 2017-08-21 16:37:20
+ * @Last Modified time: 2017-09-06 11:57:52
  */
 <template>
 <div  @touchmove.prevent="function(){}" v-if="$store.state.filterCatList && $store.state.filterCatList.length > 0">
@@ -32,7 +32,7 @@
                 </Scroller>
                 <Scroller :direction="'vertical'" class="catagory sub-catagory">
                     <div :key="index" v-show="catagory.isActive"  v-for="(catagory, index) in catagoryRadioSource">
-                        <Radio @click.native="subCataClick(item, index)" :key="idx" v-for="(item, idx) in catagory.cata" :source="catagory.cata" :index="idx" @onClick="onRadioClick">
+                        <Radio @click.native="subCataClick(item, index)" :key="idx" v-for="(item, idx) in catagory.cata" :source="catagory.cata" :index="idx" @onClick="onRadioClick" class="diffRadio">
                         </Radio>
                     </div>
                     <!--<Radio @click.native="subCatClick(item, index)" v-for="(item, index) in subCataRadioSource" :source="subCataRadioSource" :index="index" @onClick="onRadioClick"></Radio>-->
@@ -117,22 +117,28 @@ export default {
                 }
             ]
         })
-        this.$store.state.filterCatList.forEach(item => {
-            const cata = []
-            item.catList.map(cat => {
-                cata.push({
-                    content: cat.catName,
-                    isActive: false,
-                    catId: cat.catId,
+        this.$store.subscribe((mutation, state) => {
+            if (mutation.type == 'syncCatagory') {
+                this.catagoryRadioSource = []
+                state.filterCatList.forEach(item => {
+                    const cata = []
+                    item.catList.map(cat => {
+                        cata.push({
+                            content: cat.catName,
+                            isActive: false,
+                            catId: cat.catId,
+                        })
+                    })
+                    this.catagoryRadioSource.push({
+                        isActive: false,
+                        cata,
+                        content: item.catName,
+                        catId: item.catId,
+                    })
                 })
-            })
-            this.catagoryRadioSource.push({
-                isActive: false,
-                cata,
-                content: item.catName,
-                catId: item.catId,
-            })
+            }
         })
+        
     },
     methods: {
         catagorySwitch (id) {
@@ -212,13 +218,20 @@ export default {
     }
 }
 </script>
+<style>
+.aside-container {
+    z-index: 9999;
+}
+</style>
+
 <style lang="less" scoped>
 @import "~gome-ui-kit/components/less/var.less";
 @import "~gome-ui-kit/components/less/utils.less";
 @import "~gome-ui-kit/components/less/layout.less";
+
 @tab-nav-height: .88rem;
 .border () {
-    border-bottom: .02rem solid @gray-border;
+    border-bottom: 1px solid @gray-border;
 }
 .blocker {
     height: @tab-nav-height;
@@ -243,11 +256,8 @@ export default {
             font-size: @font-nm;
             &.active {
                 color: @red;
-                border-bottom: .04rem solid @red;
-            }
-            .radio-content{
-
-            }
+                border-bottom: 2px solid @red;
+            }            
             i{
                 position:relative;
                 span{
@@ -282,7 +292,7 @@ export default {
         .catagory-content {
             .flexbox();
             // min-height: 3rem;
-            max-height: 6rem;
+            height: 7.04rem;
             width: 100%;
             background-color: @gray-bg;
             .catagory {
@@ -293,9 +303,10 @@ export default {
                     .set-line-height(1; .76rem;);
                     &.active {
                         background-color: @gray-bg;
-                        border-left: .04rem solid @red;
+                        border-left: 2px solid @red;
                         color: @red;
                     }
+                    &.diffRadio{border:none;}
                 }
             }
             .main-catagory {
@@ -314,6 +325,7 @@ export default {
         }
     }
 }
+
 </style>
 
 

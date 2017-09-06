@@ -2,7 +2,7 @@
  * @Author: zhaoye 
  * @Date: 2017-07-29 20:44:12 
  * @Last Modified by: liuhuan
- * @Last Modified time: 2017-08-26 18:37:53
+ * @Last Modified time: 2017-09-05 20:08:49
  */
 <template>
     <Product
@@ -10,10 +10,10 @@
         :href="jump(data.goodsNo, data.skuID)"
         :img="data.productImgURL">
         <div slot="content">
-            <p class="title"><span class="tag">自营</span>{{data.goodsName}}</p>
+            <p class="title"><span class="tag" v-if="data.isBbc=='N'">自营</span>{{data.goodsName}}</p>
             <p class="price"><em>&yen;{{data.lowestSalePrice}}</em></p>
             <p class="comment"><small>{{data.evaluatecount}}人评论</small></p>
-            <i @click="buy($event)" class="btn-buy"><span></span></i>
+            <i @click="buy($event)" class="btn-buy"></i>
         </div>
     </Product>
 </template>
@@ -51,7 +51,6 @@ export default {
 .product.main-product {
     font-size: @font-nm;
     a {
-        padding: .2rem 0 0 .1rem;
         .flexbox();
         .container{
             &.img {
@@ -64,8 +63,9 @@ export default {
             &.content {
                 .flexitem(1);
                 position: relative;
-                border-bottom: .03rem solid @gray-border;
+                border-bottom: 1px solid @gray-border;
                 color: @font-color-dark;
+                margin-top:.2rem;
                 .title {
                     margin-bottom: .2rem;
                     margin-right: .2rem;
@@ -74,7 +74,7 @@ export default {
                     .tag {
                         display: inline-block;
                         color: @red;
-                        border: .02rem solid @red;
+                        border: 1px solid @red;
                         border-radius: .04rem;
                         padding: @font-sm/2 + .02rem .03rem @font-sm/2 + .01rem .02rem;
                         font-size: @font-sm;
@@ -92,7 +92,7 @@ export default {
                     }
                 }
                 .comment {
-                    margin-bottom: .5rem;
+                    margin-bottom: .2rem;
                     small {
                         color: @font-color-light;
                         font-size: @font-nm-sm;
@@ -101,23 +101,12 @@ export default {
                 
                 .btn-buy {
                     position: absolute;
-                    right: .2rem;
+                    right: .26rem;
                     bottom: .2rem;
-                    width: .7rem;
-                    height: .7rem;
-                    border: .03rem solid @gray-border;
-                    border-radius: 100%;
+                    width: .56rem;
+                    height: .56rem;
                     text-align: center;
-                    span{
-                        display:inline-block;
-                        margin-top:.18rem;
-                        width:.38rem;
-                        height:.35rem;
-                        .background-image-nm(url(../../images/shop_cart_icon.png));
-                    }
-                    
-                    
-                    
+                    .background-image-nm(url(../../images/cart_icon.png));
                 }
             }
         }

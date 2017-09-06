@@ -79,6 +79,7 @@ export default {
     },
     created(){
         //判断radio是否可选
+        if(!this.$store.state.globalState.giftGroupInfoList) return;
         this.$store.state.globalState.giftGroupInfoList.forEach(item =>{
             if(item.canSelect=='Y'){ //判断是否可选
                 if(item.isSelected=='Y'){//判断radio是否已经被选中
@@ -114,11 +115,11 @@ export default {
             }else{
                 this.$emit('closedAside','true');
                 //关闭按钮后初始化
-                this.radioSource.forEach((obj)=>{
-                    obj.isActive = false;
-                });
+                // this.radioSource.forEach((obj)=>{
+                //     obj.isActive = false;
+                // });
                 //确定按钮置灰
-                this.isConfirm = false;
+                // this.isConfirm = false;
             }
             
             
@@ -162,7 +163,7 @@ export default {
                                     number:goods.num,
                                     groupNo:groupList.groupNo,
                                     type:this.$store.state.globalState.type,
-                                    mainItemId:this.$store.state.globalState.mainItemId||null
+                                    mainItemId:this.$store.state.globalState.mainItemId||""
                                 })
                             })
                         }
@@ -226,7 +227,7 @@ export default {
                 width:.4rem;
                 height:.4rem;        
                 margin-right:0.2rem;
-                margin-top:0.4rem;
+                margin-top:0.42rem;
                 &.radio-yes{
                     background-color:#fff;
                     border:1px solid @gray-border;
@@ -251,7 +252,8 @@ export default {
                     //.flexbox();
                     .product{
                         //.flexbox();
-                        margin-top:.1rem;     
+                        margin-top:.1rem;
+                        padding-bottom:0.02rem;     
                         a{          
                             .flexbox();
                             .container{

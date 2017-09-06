@@ -2,7 +2,7 @@
  * @Author: zhaoye 
  * @Date: 2017-07-29 14:50:15 
  * @Last Modified by: liuhuan
- * @Last Modified time: 2017-09-01 21:07:01
+ * @Last Modified time: 2017-09-06 17:25:18
  */
 <template>
     <Page id="app">
@@ -14,7 +14,7 @@
         <p v-if="$store.state.filterCatList && $store.state.filterCatList.length > 0" class="desc">{{$store.state.globalState.desc}}</p>
         <div class="product-list-container">
             <Product v-for="item in $store.state.goodsList" :data="item"></Product>
-            <div class="loading" v-if="$store.state.goodsList.length > 5" >加载中...</div>
+            <div class="loading">{{pageText}}</div>
         </div>
         <div class="bottom-nav">
             <div class="bottom-nav-content">
@@ -51,26 +51,45 @@ export default {
     data () {
         return {
             isLoadingGoods: false,
+            pageText:'',
         }
     },
     created () {
         this.$store.dispatch('getProductList')
         new Gotop()
-        document.addEventListener('scroll', e => {
-            const rect = document.body.getBoundingClientRect()
-            if(Math.abs((rect.height - window.scrollY) - document.documentElement.offsetHeight) < 150
-                && !this.isLoadingGoods){
-                this.isLoadingGoods = true
-                this.$nextTick(async () => {
-                    await this.$store.dispatch('getProductList')
-                    this.isLoadingGoods = false
+        this.$store.subscribe((mutation,state)=>{
+            if(mutation.type== 'getTotalPage'){
+                //当前页和总页数相等，不执行翻页
+                document.addEventListener('scroll', e => {
+                    const rect = document.body.getBoundingClientRect()
+                    if(state.totalPage ==0){
+                        this.pageText='没有更多了'
+                        this.isLoadingGoods = true
+                        return;
+                    }else{
+                        if(Math.abs((rect.height - window.scrollY) - document.documentElement.offsetHeight) < 150
+                            && !this.isLoadingGoods){
+                            this.isLoadingGoods = true
+                            this.$nextTick(async () => {
+                                await this.$store.dispatch('getProductList')
+                                this.isLoadingGoods = false
+                            })
+                        }
+                        this.pageText='加载中...'
+                    }
+                    
                 })
+                    
+                
             }
         })
+       
+        
     },
     methods: {
         goback(){
-            window.history.back()
+            //window.history.back()
+            window.location.href=`//${location.host}/shopping_cart.html`
         },
         showGiftBox(){
              this.$refs.giftBox.emitAside()
@@ -84,7 +103,7 @@ export default {
 <style>
 
 #gotop {
-    right: .8rem;
+    right: .24rem;
     bottom: 1.5rem;
 }
 </style>
@@ -94,7 +113,7 @@ export default {
     @import "~gome-ui-kit/components/less/utils.less";
     @import "~gome-ui-kit/components/less/layout.less";
     .border () {
-        border-bottom: .02rem solid @gray-border;
+        border-bottom: 1px solid @gray-border;
     }
     .page {
         .flexbox();
@@ -133,13 +152,14 @@ export default {
         position: fixed;
         bottom: 0;
         background-color: #f9f9f9;
-        border-top: .02rem solid @gray-border;
+        border-top: 1px solid @gray-border;
         .bottom-nav-content {
             .flexitem(1);
             .flexbox();
             .flexbox.h_center();
             .flexbox.vertical();
             padding-left: .1rem;
+            padding-top:0.02rem;
             .tip {
                 color: @font-color-dark;
                 font-size: @font-nm;
@@ -156,6 +176,9 @@ export default {
             }
         }
         .btn {
+            width:1.8rem;
+            padding:0;
+            text-align:center;
             line-height: @bottom-nav-height;
             border: none;
             font-size: @font-nm + .02rem;

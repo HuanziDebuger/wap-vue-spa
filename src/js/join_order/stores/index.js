@@ -2,7 +2,7 @@
  * @Author: zhaoye 
  * @Date: 2017-07-29 17:04:48 
  * @Last Modified by: liuhuan
- * @Last Modified time: 2017-09-04 11:39:19
+ * @Last Modified time: 2017-09-06 17:24:41
  */
 import Vue from 'vue'
 import Vuex from 'vuex'
@@ -15,9 +15,10 @@ export default new Vuex.Store({
         globalState: null,
         goodsList: [],
         curPage: 0,
-        filterCatList: [],
+        filterCatList:[],
         nextCatagoryId: '',
         nextSort: window.sort,
+        totalPage:''
     },
     mutations: {
         syncCatagoryState(state, data) {
@@ -31,6 +32,10 @@ export default new Vuex.Store({
         syncCatagory(state, data) {
             if (data && data.length > 0)
                 state.filterCatList = data
+        },
+        //获取商品的总页数
+        getTotalPage(state,page){
+            state.totalPage = page
         },
         backPage(state) {
             state.curPage--
@@ -63,8 +68,8 @@ export default new Vuex.Store({
                         promId: window.promId,
                         isGetGifts: window.isGetGifts,
                         goodsList: options,
-                        shopNo:window.shopNo||null,
-                        relCommIds:window.relCommIds||null
+                        shopNo:window.shopNo||"",
+                        relCommIds:window.relCommIds||""
                     }
                 })
                 if (result.isSuccess == 'N') {
@@ -87,8 +92,8 @@ export default new Vuex.Store({
                         isNpop: window.isNpop,
                         promId: window.promId,
                         isGetGifts: window.isGetGifts,
-                        shopNo:window.shopNo||null,
-                        relCommIds:window.relCommIds||null
+                        shopNo:window.shopNo||"",
+                        relCommIds:window.relCommIds||""
                         
                     },
                 })
@@ -101,8 +106,7 @@ export default new Vuex.Store({
                 return Promise.reject(e)
             }
         },
-        async getProductList({ state, commit }, options) {
-            //http://cart.m.gome.com.cn/shop_cart/joinOrderList?act_id=&sort=0&cat_id=&page=1&sourse=1&crossShop=0&isKdpPromotion=N&promId=P2988541
+        async getProductList({ state, commit }, options) {            
             if (!options) {
                 options = {
                     reset: false
@@ -117,14 +121,14 @@ export default new Vuex.Store({
                 commit('setNextSort', options.sort || 0)
                 if (options.catId) {
                     commit('setNextCatagoryId', options.catId)
-                }
+                }                
                 const result = await http({
                     url: `//${location.host}/shop_cart/joinOrderList`,
                     data: {
-                        act_id: '',
+                        act_id:window.act_id,
                         sort: state.nextSort,
                         page: state.curPage,
-                        crossShop: 0,
+                        crossShop:  window.crossShop,
                         sourse: window.sourse,
                         isKdpPromotion: window.isKdpPromotion,
                         promId: window.promId,
@@ -138,6 +142,8 @@ export default new Vuex.Store({
                 }
                 commit('syncCatagory', result.filterCatList)
                 commit('syncGoodsListState', result.goodsList)
+                //获取接口返回的分页信息
+                commit('getTotalPage',result.pageBar.totalPage)
                 return result
             } catch (e) {
                 commit('backPage')
@@ -158,8 +164,8 @@ export default new Vuex.Store({
                             skuId: skuID,
                             number: 1
                         }],
-                        shopNo:window.shopNo||null,
-                        relCommIds:window.relCommIds||null
+                        shopNo:window.shopNo||"",
+                        relCommIds:window.relCommIds||""
                     },
                     isNeedLoading: 'Y',
                 })
