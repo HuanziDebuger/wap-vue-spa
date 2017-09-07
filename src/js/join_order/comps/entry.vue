@@ -2,7 +2,7 @@
  * @Author: zhaoye 
  * @Date: 2017-07-29 14:50:15 
  * @Last Modified by: liuhuan
- * @Last Modified time: 2017-09-06 17:25:18
+ * @Last Modified time: 2017-09-07 10:56:51
  */
 <template>
     <Page id="app">
@@ -18,7 +18,7 @@
         </div>
         <div class="bottom-nav">
             <div class="bottom-nav-content">
-                <p class="tip">{{$store.state.globalState.condition}}，小计:<em>{{$store.state.globalState.amount}}</em></p>
+                <p class="tip">小计:<em>{{$store.state.globalState.amount}}</em></p>
                 <p class="sub-tip">{{$store.state.globalState.discount}}</p>
             </div>
             <Button
@@ -55,7 +55,11 @@ export default {
         }
     },
     created () {
-        this.$store.dispatch('getProductList')
+        if(window.shopNo){ //判断是不是线下门店商品
+            return;
+        }else{
+            this.$store.dispatch('getProductList')
+        }
         new Gotop()
         this.$store.subscribe((mutation,state)=>{
             if(mutation.type== 'getTotalPage'){
