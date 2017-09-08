@@ -2,7 +2,7 @@
  * @Author: zhaoye 
  * @Date: 2017-07-29 18:15:51 
  * @Last Modified by: liuhuan
- * @Last Modified time: 2017-09-06 11:57:52
+ * @Last Modified time: 2017-09-08 15:37:20
  */
 <template>
 <div  @touchmove.prevent="function(){}" v-if="$store.state.filterCatList && $store.state.filterCatList.length > 0">
@@ -93,17 +93,6 @@ export default {
         }
     },
     computed:{
-        // priceCont(){
-        //     if(!this.priceHighFirst && !this.priceLowFirst){
-        //         return '无'
-        //     }else if(!this.priceHighFirst){
-        //         return '低'
-        //     }else{
-        //         return '高'
-        //     }
-
-        // }
-        
     },
     created () {
         this.catagoryRadioSource.push({
@@ -135,9 +124,24 @@ export default {
                         content: item.catName,
                         catId: item.catId,
                     })
+                    
                 })
+                //默认展示第一项全部分类
+                this.catagoryRadioSource.unshift({
+                    isActive: true,
+                    content: '全部分类',
+                    cata: [
+                        {
+                            content: '全部分类',
+                            isActive: true,
+                            catId: ''
+                        }
+                    ]
+                });
             }
         })
+       
+        
         
     },
     methods: {
@@ -206,7 +210,7 @@ export default {
                         item.isActive = false
                     })
                 }
-            })
+            })            
             if(this.$store.state.nextCatagoryId == subCatagory.catId)return
             this.catagoryHide()
             await this.$store.dispatch('getProductList', {
