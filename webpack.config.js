@@ -1,13 +1,8 @@
 /*
  * @Author: zhaoye 
  * @Date: 2017-06-17 19:49:38 
-<<<<<<< HEAD
- * @Last Modified by: zhudanmei
- * @Last Modified time: 2017-08-24 14:45:02
-=======
  * @Last Modified by: liuhuan
- * @Last Modified time: 2017-08-29 17:38:26
->>>>>>> 7c29bb3a597bcce28d2bacbda82a6d6e9fcfd029
+ * @Last Modified time: 2017-09-11 19:37:12
  */
 const Promise = require('bluebird')
 const webpack = require('webpack')
